@@ -26,14 +26,14 @@
 #import "BRKey+BIP38.h"
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
 #import "ccMemory.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import <openssl/ecdsa.h>
 #import <openssl/obj_mac.h>
 
 // BIP38 is a method for encrypting private keys with a passphrase
-// https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
+// https://github.com/digibyte/bips/blob/master/bip-0038.mediawiki
 
 #define BIP38_SCRYPT_N    16384
 #define BIP38_SCRYPT_R    8
@@ -255,7 +255,7 @@ passphrase:(NSString *)passphrase
 }
 
 // generates a BIP38 key from an "intermediate code" and 24 bytes of cryptographically random data (seedb),
-// compressed indicates if compressed pubKey format should be used for the bitcoin address, confcode (optional) will
+// compressed indicates if compressed pubKey format should be used for the digibyte address, confcode (optional) will
 // be set to the "confirmation code"
 + (NSString *)BIP38KeyWithIntermediateCode:(NSString *)code seedb:(NSData *)seedb compressed:(BOOL)compressed
 confirmationCode:(NSString **)confcode;
@@ -343,7 +343,7 @@ confirmationCode:(NSString **)confcode;
     return [NSString base58checkWithData:key];
 }
 
-// returns true if the "confirmation code" confirms that the given bitcoin address depends on the specified passphrase
+// returns true if the "confirmation code" confirms that the given digibyte address depends on the specified passphrase
 + (BOOL)confirmWithBIP38ConfirmationCode:(NSString *)code address:(NSString *)address passphrase:(NSString *)passphrase
 {
     NSData *d = code.base58checkToData;

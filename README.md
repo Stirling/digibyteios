@@ -4,19 +4,19 @@
 [![download](/images/Download_on_the_App_Store_Badge_US-UK_135x40.png)]
 (https://itunes.apple.com/app/breadwallet/id885251393)
 
-**bitcoin done right**
+**digibyte done right**
 
-the simplest and most secure bitcoin wallet on any platform 
+the simplest and most secure digibyte wallet on any platform 
 
 ![screenshot1](/images/screenshot1.jpg)
 
-**the first standalone iOS bitcoin wallet:**
+**the first standalone iOS digibyte wallet:**
 
-Unlike other iOS bitcoin wallets, breadwallet is a real standalone bitcoin
+Unlike other iOS digibyte wallets, breadwallet is a real standalone digibyte
 client. There is no server to get hacked or go down, so you can always access
 your money. Using
-[SPV](https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients)
-mode, breadwallet connects directly to the bitcoin network with the fast
+[SPV](https://en.digibyte.it/wiki/Thin_Client_Security#Header-Only_Clients)
+mode, breadwallet connects directly to the digibyte network with the fast
 performance you need on a mobile device.
 
 **the next step in wallet security:**
@@ -31,7 +31,7 @@ web and desktop wallets, and other mobile platforms.
 Simplicity is breadwallet's core design principle. A simple backup phrase is
 all you need to restore your wallet on another device if yours is ever lost or
 broken.  Because breadwallet is  
-[deterministic](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki),
+[deterministic](https://github.com/digibyte/bips/blob/master/bip-0032.mediawiki),
 your balance and transaction history can be recovered from just your backup
 phrase.
 
@@ -39,12 +39,12 @@ phrase.
 
 **features:**
 
-- ["simplified payment verification"](https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki) for fast mobile performance
+- ["simplified payment verification"](https://github.com/digibyte/bips/blob/master/bip-0037.mediawiki) for fast mobile performance
 - no server to get hacked or go down
 - single backup phrase that works forever
 - private keys never leave your device
-- import [password protected](https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki) paper wallets
-- ["payment protocol"](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki) payee identity certification
+- import [password protected](https://github.com/digibyte/bips/blob/master/bip-0038.mediawiki) paper wallets
+- ["payment protocol"](https://github.com/digibyte/bips/blob/master/bip-0070.mediawiki) payee identity certification
 
 breadwallet is open source and available under the terms of the MIT license.
 Source code is available at https://github.com/voisine/breadwallet

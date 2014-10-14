@@ -26,7 +26,7 @@
 #import "BRKey.h"
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import <openssl/ecdsa.h>
 #import <openssl/obj_mac.h>
@@ -157,7 +157,7 @@ static NSData *hmac_drbg(NSData *entropy, NSData *nonce)
 {
     // mini private key format
     if ((privateKey.length == 30 || privateKey.length == 22) && [privateKey characterAtIndex:0] == 'S') {
-        if (! [privateKey isValidBitcoinPrivateKey]) return;
+        if (! [privateKey isValidDigiBytePrivateKey]) return;
         
         [self setSecret:[CFBridgingRelease(CFStringCreateExternalRepresentation(SecureAllocator(),
                          (CFStringRef)privateKey, kCFStringEncodingUTF8, 0)) SHA256] compressed:NO];

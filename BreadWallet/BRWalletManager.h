@@ -41,10 +41,10 @@
 @property (nonatomic, readonly) NSTimeInterval seedCreationTime; // interval since refrence date, 00:00:00 01/01/01 GMT
 @property (nonatomic, readonly, getter=isPasscodeEnabled) BOOL passcodeEnabled; // true if device passcode is enabled
 @property (nonatomic, assign) BOOL didAuthenticate; // true if the user authenticated after this was last set to false
-@property (nonatomic, readonly) NSNumberFormatter *format; // bitcoin currency formatter
+@property (nonatomic, readonly) NSNumberFormatter *format; // digibyte currency formatter
 @property (nonatomic, readonly) NSNumberFormatter *localFormat; // local currency formatter
 @property (nonatomic, copy) NSString *localCurrencyCode; // local currency ISO code
-@property (nonatomic, readonly) double localCurrencyPrice; // exchange rate in local currency units per bitcoin
+@property (nonatomic, readonly) double localCurrencyPrice; // exchange rate in local currency units per digibyte
 @property (nonatomic, readonly) NSArray *currencyCodes; // list of supported local currencies
 
 + (instancetype)sharedInstance;

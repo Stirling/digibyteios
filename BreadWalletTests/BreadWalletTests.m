@@ -34,7 +34,7 @@
 #import "BRMerkleBlock.h"
 #import "BRPaymentProtocol.h"
 #import "NSData+Hash.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
 #import "NSString+Base58.h"
 
 //#define SKIP_BIP38 1
@@ -74,19 +74,19 @@
 #if ! BITCOIN_TESTNET
 - (void)testKeyWithPrivateKey
 {
-    XCTAssertFalse([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRz" isValidBitcoinPrivateKey],
-                  @"[NSString+Base58 isValidBitcoinPrivateKey]");
+    XCTAssertFalse([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRz" isValidDigiBytePrivateKey],
+                  @"[NSString+Base58 isValidDigiBytePrivateKey]");
 
-    XCTAssertTrue([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy" isValidBitcoinPrivateKey],
-                 @"[NSString+Base58 isValidBitcoinPrivateKey]");
+    XCTAssertTrue([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy" isValidDigiBytePrivateKey],
+                 @"[NSString+Base58 isValidDigiBytePrivateKey]");
 
     // mini private key format
     BRKey *key = [BRKey keyWithPrivateKey:@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"];
     
     NSLog(@"privKey:S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy = %@", key.address);
     XCTAssertEqualObjects(@"1CciesT23BNionJeXrbxmjc7ywfiyM4oLW", key.address, @"[BRKey keyWithPrivateKey:]");
-    XCTAssertTrue([@"SzavMBLoXU6kDrqtUVmffv" isValidBitcoinPrivateKey],
-                 @"[NSString+Base58 isValidBitcoinPrivateKey]");
+    XCTAssertTrue([@"SzavMBLoXU6kDrqtUVmffv" isValidDigiBytePrivateKey],
+                 @"[NSString+Base58 isValidDigiBytePrivateKey]");
 
     // old mini private key format
     key = [BRKey keyWithPrivateKey:@"SzavMBLoXU6kDrqtUVmffv"];
@@ -321,7 +321,7 @@
 //TODO: test valid request with no arguments
 //TODO: test valid request with known arguments
 //TODO: test valid request with unkown arguments
-//TODO: test invalid bitcoin address
+//TODO: test invalid digibyte address
 //TODO: test invalid request with unkown required arguments
 
 #pragma mark - testTransaction
@@ -762,7 +762,7 @@
 //TODO: test gap limit with gaps in address chain less than the limit
 //TODO: test removing a transaction that other transansactions depend on
 //TODO: test tx ordering for multiple tx with same block height
-//TODO: port all applicable tests from bitcoinj and bitcoincore
+//TODO: port all applicable tests from digibytej and digibytecore
 
 - (void)testWallet
 {

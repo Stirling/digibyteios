@@ -34,7 +34,7 @@
 #import "BRTransactionEntity.h"
 #import "BRAddressEntity.h"
 #import "NSString+Base58.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
 #import "NSManagedObject+Sugar.h"
 #import "Reachability.h"
 
@@ -573,7 +573,7 @@ completion:(void (^)(BRTransaction *tx, NSError *error))completion
 {
     if (! completion) return;
 
-    if ([privKey isValidBitcoinBIP38Key]) {
+    if ([privKey isValidDigiByteBIP38Key]) {
         UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"password protected key" message:nil delegate:self
                           cancelButtonTitle:@"cancel" otherButtonTitles:@"ok", nil];
 

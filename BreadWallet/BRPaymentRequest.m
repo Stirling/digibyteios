@@ -27,7 +27,7 @@
 #import "BRPaymentProtocol.h"
 #import "NSString+Base58.h"
 
-// BIP21 bitcoin URI object https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
+// BIP21 digibyte URI object https://github.com/digibyte/bips/blob/master/bip-0021.mediawiki
 @implementation BRPaymentRequest
 
 + (instancetype)requestWithString:(NSString *)string
@@ -80,7 +80,7 @@
     NSURL *url = [NSURL URLWithString:s];
     
     if (! url || ! url.scheme) {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"bitcoin://%@", s]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"digibyte://%@", s]];
     }
     else if (! url.host && url.resourceSpecifier) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", url.scheme, url.resourceSpecifier]];
@@ -115,7 +115,7 @@
 {
     if (! self.paymentAddress) return nil;
 
-    NSMutableString *s = [NSMutableString stringWithFormat:@"bitcoin:%@", self.paymentAddress];
+    NSMutableString *s = [NSMutableString stringWithFormat:@"digibyte:%@", self.paymentAddress];
     NSMutableArray *q = [NSMutableArray array];
     
     if (self.amount > 0) {
@@ -150,7 +150,7 @@
 
 - (BOOL)isValid
 {
-    if (! [self.paymentAddress isValidBitcoinAddress] && (! self.r || ! [NSURL URLWithString:self.r])) return NO;
+    if (! [self.paymentAddress isValidDigiByteAddress] && (! self.r || ! [NSURL URLWithString:self.r])) return NO;
 
     return YES;
 }
@@ -172,11 +172,11 @@ completion:(void (^)(BRPaymentProtocolRequest *req, NSError *error))completion
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:u
                                 cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:timeout];
 
-    [req addValue:@"application/bitcoin-paymentrequest" forHTTPHeaderField:@"Accept"];
+    [req addValue:@"application/digibyte-paymentrequest" forHTTPHeaderField:@"Accept"];
 
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue currentQueue]
     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (! [response.MIMEType.lowercaseString isEqual:@"application/bitcoin-paymentrequest"] || data.length > 50000){
+        if (! [response.MIMEType.lowercaseString isEqual:@"application/digibyte-paymentrequest"] || data.length > 50000){
             completion(nil, [NSError errorWithDomain:@"BreadWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                              [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil), u.host]
                             }]);
@@ -221,8 +221,8 @@ completion:(void (^)(BRPaymentProtocolACK *ack, NSError *error))completion
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:u
                                 cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:timeout];
 
-    [req addValue:@"application/bitcoin-payment" forHTTPHeaderField:@"Content-Type"];
-    [req addValue:@"application/bitcoin-paymentack" forHTTPHeaderField:@"Accept"];
+    [req addValue:@"application/digibyte-payment" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"application/digibyte-paymentack" forHTTPHeaderField:@"Accept"];
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody:payment.data];
 
@@ -233,7 +233,7 @@ completion:(void (^)(BRPaymentProtocolACK *ack, NSError *error))completion
             return;
         }
 
-        if (! [response.MIMEType.lowercaseString isEqual:@"application/bitcoin-paymentack"] || data.length > 50000) {
+        if (! [response.MIMEType.lowercaseString isEqual:@"application/digibyte-paymentack"] || data.length > 50000) {
             completion(nil, [NSError errorWithDomain:@"BreadWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                              [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil), u.host]
                             }]);

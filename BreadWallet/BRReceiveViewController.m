@@ -30,9 +30,9 @@
 #import "BRWallet.h"
 #import "BRBubbleView.h"
 
-#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your bitcoin address. Anyone can send "\
-                    "bitcoins to your wallet by transferring them to your address.", nil)
-#define ADDRESS_TIP NSLocalizedString(@"This is your bitcoin address. Tap to copy it or send it by email or sms. The "\
+#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your digibyte address. Anyone can send "\
+                    "digibytes to your wallet by transferring them to your address.", nil)
+#define ADDRESS_TIP NSLocalizedString(@"This is your digibyte address. Tap to copy it or send it by email or sms. The "\
                     "address will change each time you receive funds, but old addresses always work.", nil)
 
 @interface BRReceiveViewController ()
@@ -172,7 +172,7 @@
 
     UIActionSheet *a = [UIActionSheet new];
 
-    a.title = [NSString stringWithFormat:NSLocalizedString(@"Receive bitcoins at this address: %@", nil),
+    a.title = [NSString stringWithFormat:NSLocalizedString(@"Receive digibytes at this address: %@", nil),
                self.paymentAddress];
     a.delegate = self;
     [a addButtonWithTitle:NSLocalizedString(@"copy to clipboard", nil)];
@@ -205,13 +205,13 @@
     }
     else if ([title isEqual:NSLocalizedString(@"send as email", nil)]) {
         //TODO: implement BIP71 payment protocol mime attachement
-        // https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki
+        // https://github.com/digibyte/bips/blob/master/bip-0071.mediawiki
         
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *c = [MFMailComposeViewController new];
             
-            [c setSubject:NSLocalizedString(@"Bitcoin address", nil)];
-            [c setMessageBody:[@"bitcoin:" stringByAppendingString:self.paymentAddress] isHTML:NO];
+            [c setSubject:NSLocalizedString(@"DigiByte address", nil)];
+            [c setMessageBody:[@"digibyte:" stringByAppendingString:self.paymentAddress] isHTML:NO];
             c.mailComposeDelegate = self;
             [self.navigationController presentViewController:c animated:YES completion:nil];
             c.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];
@@ -225,7 +225,7 @@
         if ([MFMessageComposeViewController canSendText]) {
             MFMessageComposeViewController *c = [MFMessageComposeViewController new];
             
-            c.body = [@"bitcoin:" stringByAppendingString:self.paymentAddress];
+            c.body = [@"digibyte:" stringByAppendingString:self.paymentAddress];
             c.messageComposeDelegate = self;
             [self.navigationController presentViewController:c animated:YES completion:nil];
             c.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];

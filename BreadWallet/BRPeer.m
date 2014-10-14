@@ -26,9 +26,9 @@
 #import "BRPeer.h"
 #import "BRTransaction.h"
 #import "BRMerkleBlock.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
 #import "NSString+Base58.h"
-#import "NSData+Bitcoin.h"
+#import "NSData+DigiByte.h"
 #import "NSData+Hash.h"
 #import <arpa/inet.h>
 #import "Reachability.h"
@@ -860,7 +860,7 @@ services:(uint64_t)services
 
 - (void)acceptMerkleblockMessage:(NSData *)message
 {
-    // Bitcoin nodes don't support querying arbitrary transactions, only transactions not yet accepted in a block. After
+    // DigiByte nodes don't support querying arbitrary transactions, only transactions not yet accepted in a block. After
     // a merkleblock message, the remote node is expected to send tx messages for the tx referenced in the block. When a
     // non-tx message is received we should have all the tx in the merkleblock.
 
@@ -893,7 +893,7 @@ services:(uint64_t)services
     }
 }
 
-// described in BIP61: https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki
+// described in BIP61: https://github.com/digibyte/bips/blob/master/bip-0061.mediawiki
 - (void)acceptRejectMessage:(NSData *)message
 {
     NSUInteger off = 0, l = 0;

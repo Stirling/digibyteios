@@ -30,8 +30,8 @@
 #import "BRTransactionEntity.h"
 #import "BRKeySequence.h"
 #import "NSData+Hash.h"
-#import "NSData+Bitcoin.h"
-#import "NSMutableData+Bitcoin.h"
+#import "NSData+DigiByte.h"
+#import "NSMutableData+DigiByte.h"
 #import "NSManagedObject+Sugar.h"
 
 static NSData *txOutput(NSData *txHash, uint32_t n)

@@ -56,7 +56,7 @@
         }
     }
 
-    //TODO: bitcoin protocol/payment protocol over multipeer connectivity
+    //TODO: digibyte protocol/payment protocol over multipeer connectivity
 
     //TODO: accessibility for the visually impaired
 
@@ -74,8 +74,8 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
 annotation:(id)annotation
 {
-    if (! [url.scheme isEqual:@"bitcoin"] && ! [url.scheme isEqual:@"bread"]) {
-        [[[UIAlertView alloc] initWithTitle:@"Not a bitcoin URL" message:url.absoluteString delegate:nil
+    if (! [url.scheme isEqual:@"digibyte"] && ! [url.scheme isEqual:@"bread"]) {
+        [[[UIAlertView alloc] initWithTitle:@"Not a digibyte URL" message:url.absoluteString delegate:nil
           cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return NO;
     }

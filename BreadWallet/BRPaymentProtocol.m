@@ -27,7 +27,7 @@
 #import "BRTransaction.h"
 #import "NSData+Hash.h"
 
-// BIP70 payment protocol: https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki
+// BIP70 payment protocol: https://github.com/digibyte/bips/blob/master/bip-0070.mediawiki
 
 #define PROTOBUF_VARINT   0 // int32, int64, uint32, uint64, sint32, sint64, bool, enum
 #define PROTOBUF_64BIT    1 // fixed64, sfixed64, double

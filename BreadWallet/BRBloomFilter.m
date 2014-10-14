@@ -25,8 +25,8 @@
 
 #import "BRBloomFilter.h"
 #import "BRTransaction.h"
-#import "NSMutableData+Bitcoin.h"
-#import "NSData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
+#import "NSData+DigiByte.h"
 #import "NSString+Base58.h"
 
 #define BLOOM_MAX_HASH_FUNCS 50
@@ -61,7 +61,7 @@ static uint32_t murmurHash3(NSData *data, uint32_t seed)
     return h1;
 }
 
-// bloom filters are explained in BIP37: https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
+// bloom filters are explained in BIP37: https://github.com/digibyte/bips/blob/master/bip-0037.mediawiki
 @interface BRBloomFilter ()
 
 @property (nonatomic, strong) NSMutableData *filter;

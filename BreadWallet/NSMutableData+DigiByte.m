@@ -1,5 +1,5 @@
 //
-//  NSMutableData+Bitcoin.m
+//  NSMutableData+DigiByte.m
 //  BreadWallet
 //
 //  Created by Aaron Voisine on 5/20/13.
@@ -23,12 +23,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSMutableData+Bitcoin.h"
-#import "NSData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
+#import "NSData+DigiByte.h"
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
 
-@implementation NSMutableData (Bitcoin)
+@implementation NSMutableData (DigiByte)
 
 + (NSMutableData *)secureData
 {
@@ -122,7 +122,7 @@
     [self appendBytes:s.UTF8String length:l];
 }
 
-#pragma mark - bitcoin script
+#pragma mark - digibyte script
 
 - (void)appendScriptPushData:(NSData *)d
 {
@@ -177,7 +177,7 @@
     }
 }
 
-#pragma mark - bitcoin protocol
+#pragma mark - digibyte protocol
 
 - (void)appendMessage:(NSData *)message type:(NSString *)type;
 {

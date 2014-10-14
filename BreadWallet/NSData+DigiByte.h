@@ -1,8 +1,8 @@
 //
-//  NSMutableData+Bitcoin.h
+//  NSData+DigiByte.h
 //  BreadWallet
 //
-//  Created by Aaron Voisine on 5/20/13.
+//  Created by Aaron Voisine on 10/9/13.
 //  Copyright (c) 2013 Aaron Voisine <voisine@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,33 +25,31 @@
 
 #import <Foundation/Foundation.h>
 
-#if BITCOIN_TESTNET
-#define BITCOIN_MAGIC_NUMBER 0x0709110b
-#else
-#define BITCOIN_MAGIC_NUMBER 0xd9b4bef9
-#endif
+#define VAR_INT16_HEADER 0xfd
+#define VAR_INT32_HEADER 0xfe
+#define VAR_INT64_HEADER 0xff
 
-@interface NSMutableData (Bitcoin)
+// digibyte script opcodes: https://en.digibyte.it/wiki/Script#Constants
+#define OP_PUSHDATA1   0x4c
+#define OP_PUSHDATA2   0x4d
+#define OP_PUSHDATA4   0x4e
+#define OP_DUP         0x76
+#define OP_EQUAL       0x87
+#define OP_EQUALVERIFY 0x88
+#define OP_HASH160     0xa9
+#define OP_CHECKSIG    0xac
 
-+ (NSMutableData *)secureData;
-+ (NSMutableData *)secureDataWithLength:(NSUInteger)length;
-+ (NSMutableData *)secureDataWithCapacity:(NSUInteger)capacity;
-+ (NSMutableData *)secureDataWithData:(NSData *)data;
+@interface NSData (DigiByte)
 
-+ (size_t)sizeOfVarInt:(uint64_t)i;
-
-- (void)appendUInt8:(uint8_t)i;
-- (void)appendUInt16:(uint16_t)i;
-- (void)appendUInt32:(uint32_t)i;
-- (void)appendUInt64:(uint64_t)i;
-- (void)appendVarInt:(uint64_t)i;
-- (void)appendString:(NSString *)s;
-
-- (void)appendScriptPubKeyForAddress:(NSString *)address;
-- (void)appendScriptPushData:(NSData *)d;
-
-- (void)appendMessage:(NSData *)message type:(NSString *)type;
-- (void)appendNullPaddedString:(NSString *)s length:(NSUInteger)length;
-- (void)appendNetAddress:(uint32_t)address port:(uint16_t)port services:(uint64_t)services;
+- (uint8_t)UInt8AtOffset:(NSUInteger)offset;
+- (uint16_t)UInt16AtOffset:(NSUInteger)offset;
+- (uint32_t)UInt32AtOffset:(NSUInteger)offset;
+- (uint64_t)UInt64AtOffset:(NSUInteger)offset;
+- (uint64_t)varIntAtOffset:(NSUInteger)offset length:(NSUInteger *)length;
+- (NSData *)hashAtOffset:(NSUInteger)offset;
+- (NSString *)stringAtOffset:(NSUInteger)offset length:(NSUInteger *)length;
+- (NSData *)dataAtOffset:(NSUInteger)offset length:(NSUInteger *)length;
+- (NSArray *)scriptElements; // an array of NSNumber and NSData objects representing each script element
+- (int)intValue; // returns the opcode used to store the receiver in a script (i.e. OP_PUSHDATA1)
 
 @end

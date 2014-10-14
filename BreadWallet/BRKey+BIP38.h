@@ -26,7 +26,7 @@
 #import "BRKey.h"
 
 // BIP38 is a method for encrypting private keys with a passphrase
-// https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
+// https://github.com/digibyte/bips/blob/master/bip-0038.mediawiki
 
 @interface BRKey (BIP38)
 
@@ -42,12 +42,12 @@
 passphrase:(NSString *)passphrase;
 
 // generates a BIP38 key from an "intermediate code" and 24 bytes of cryptographically random data (seedb),
-// compressed indicates if compressed pubKey format should be used for the bitcoin address, confcode (optional) will
+// compressed indicates if compressed pubKey format should be used for the digibyte address, confcode (optional) will
 // be set to the "confirmation code"
 + (NSString *)BIP38KeyWithIntermediateCode:(NSString *)code seedb:(NSData *)seedb compressed:(BOOL)compressed
 confirmationCode:(NSString **)confcode;
 
-// returns true if the "confirmation code" confirms that the given bitcoin address depends on the specified passphrase
+// returns true if the "confirmation code" confirms that the given digibyte address depends on the specified passphrase
 + (BOOL)confirmWithBIP38ConfirmationCode:(NSString *)code address:(NSString *)address passphrase:(NSString *)passphrase;
 
 - (instancetype)initWithBIP38Key:(NSString *)key andPassphrase:(NSString *)passphrase;

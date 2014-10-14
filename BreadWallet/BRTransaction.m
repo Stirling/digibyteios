@@ -26,8 +26,8 @@
 #import "BRTransaction.h"
 #import "BRKey.h"
 #import "NSString+Base58.h"
-#import "NSMutableData+Bitcoin.h"
-#import "NSData+Bitcoin.h"
+#import "NSMutableData+DigiByte.h"
+#import "NSData+DigiByte.h"
 #import "NSData+Hash.h"
 
 #define TX_VERSION    0x00000001u
@@ -401,7 +401,7 @@ sequence:(uint32_t)sequence
     if (amountTotal == 0) return TX_UNCONFIRMED;
     
     // this could possibly overflow a uint64 for very large input amounts and far in the future block heights,
-    // however we should be okay up to the largest current bitcoin balance in existence for the next 40 years or so,
+    // however we should be okay up to the largest current digibyte balance in existence for the next 40 years or so,
     // and the worst case is paying a transaction fee when it's not needed
     return (uint32_t)((TX_FREE_MIN_PRIORITY*(uint64_t)self.size + amountsByHeights + amountTotal - 1ULL)/amountTotal);
 }
