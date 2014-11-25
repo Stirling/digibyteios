@@ -283,7 +283,7 @@ services:(uint64_t)services
 
 - (void)sendVersionMessage
 {
-    NSMutableData *msg = [NSMutableData data];
+   NSMutableData *msg = [NSMutableData data];
     
     [msg appendUInt32:PROTOCOL_VERSION]; // version
     [msg appendUInt64:ENABLED_SERVICES]; // services
