@@ -42,9 +42,9 @@
 #define ENABLED_SERVICES   0     // we don't provide full blocks to remote nodes
 #define PROTOCOL_VERSION   70002
 #if TX_FEE_0_8_RULES
-#define MIN_PROTO_VERSION  70001 // peers earlier than this protocol version not supported (SPV mode required)
+#define MIN_PROTO_VERSION  209 // peers earlier than this protocol version not supported (SPV mode required)
 #else
-#define MIN_PROTO_VERSION  70002 // peers earlier than this protocol version not supported (need v0.9 txFee relay rules)
+#define MIN_PROTO_VERSION  209 // peers earlier than this protocol version not supported (need v0.9 txFee relay rules)
 #endif
 #define LOCAL_HOST         0x7f000001
 #define ZERO_HASH          @"0000000000000000000000000000000000000000000000000000000000000000".hexToData
@@ -233,7 +233,7 @@ services:(uint64_t)services
 - (void)error:(NSString *)message, ...
 {
     va_list args;
-
+    NSLog(@"ERROR:\n %@ \n",message);
     va_start(args, message);
     [self disconnectWithError:[NSError errorWithDomain:@"BreadWallet" code:500
      userInfo:@{NSLocalizedDescriptionKey:[[NSString alloc] initWithFormat:message arguments:args]}]];
@@ -996,9 +996,8 @@ services:(uint64_t)services
                     // consume one byte at a time, up to the magic number that starts a new message header
                     while (self.msgHeader.length >= sizeof(uint32_t) &&
                            [self.msgHeader UInt32AtOffset:0] != BITCOIN_MAGIC_NUMBER) {
-#if DEBUG
                         printf("%c", *(const char *)self.msgHeader.bytes);
-#endif
+
                         [self.msgHeader replaceBytesInRange:NSMakeRange(0, 1) withBytes:NULL length:0];
                     }
                     

@@ -271,7 +271,7 @@ static NSData *getKeychainData(NSString *key, NSString *authprompt)
         //BUG: if locale changed since last time, we'll start with an incorrect price
     }
     
-    [self updateExchangeRate];
+    //[self updateExchangeRate];
 }
 
 - (void)dealloc
@@ -492,7 +492,7 @@ static NSData *getKeychainData(NSString *key, NSString *authprompt)
     [defs removeObjectForKey:LOCAL_CURRENCY_SYMBOL_KEY];
     [defs removeObjectForKey:LOCAL_CURRENCY_PRICE_KEY];
     
-    [self updateExchangeRate];
+    //[self updateExchangeRate];
 }
 
 - (void)updateExchangeRate

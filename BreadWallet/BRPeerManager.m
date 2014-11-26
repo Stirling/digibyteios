@@ -45,12 +45,12 @@
 
 #if BITCOIN_TESTNET
 
-#define GENESIS_BLOCK_HASH @"000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943".hexToData.reverse
+#define GENESIS_BLOCK_HASH @"7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496".hexToData.reverse
 
 // The testnet genesis block uses the mainnet genesis block's merkle root. The hash is wrong using its own root.
 #define GENESIS_BLOCK [[BRMerkleBlock alloc] initWithBlockHash:GENESIS_BLOCK_HASH version:1\
     prevBlock:@"0000000000000000000000000000000000000000000000000000000000000000".hexToData\
-    merkleRoot:@"3ba3edfd7a7b12b27ac72c3e67768f617fC81bc3888a51323a9fb8aa4b1e5e4a".hexToData\
+    merkleRoot:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData\
     timestamp:1296688602.0 - NSTimeIntervalSince1970 target:0x1d00ffffu nonce:414098458u totalTransactions:1\
     hashes:@"3ba3edfd7a7b12b27ac72c3e67768f617fC81bc3888a51323a9fb8aa4b1e5e4a".hexToData flags:@"00".hexToData height:0]
 
@@ -60,7 +60,9 @@ static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t ta
 };
 
 static const char *dns_seeds[] = {
-    "testnet-seed.digibyte.petertodd.org", "testnet-seed.bluematt.me", "testnet-seed.alexykot.me"
+    "seed1.digibyte.co",
+    "seed2.hashdragon.com",
+    "dgb.cryptoservices.net"
 };
 
 #else // main net
@@ -70,18 +72,20 @@ static const char *dns_seeds[] = {
 #define GENESIS_BLOCK [[BRMerkleBlock alloc] initWithBlockHash:GENESIS_BLOCK_HASH version:1\
     prevBlock:@"0000000000000000000000000000000000000000000000000000000000000000".hexToData\
     merkleRoot:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData\
-    timestamp:1392796564.0 - NSTimeIntervalSince1970 target:0x1d00ffffu nonce:961533u totalTransactions:1\
-    hashes:@"3ba3edfd7a7b12b27ac72c3e67768f617fC81bc3888a51323a9fb8aa4b1e5e4a".hexToData flags:@"00".hexToData height:0]
+    timestamp:1389388394.0 - NSTimeIntervalSince1970 target:0x1e0ffff0u nonce:2447652u totalTransactions:1\
+    hashes:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData flags:@"00".hexToData height:0]
 
 // blockchain checkpoints, these are also used as starting points for partial chain downloads, so they need to be at
 // difficulty transition boundaries in order to verify the block difficulty at the immediately following transition
 static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t target; } checkpoint_array[] = {
-    { 245000, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
-    { 249000, "e79a29df47b540a294ac1a2adcd02bae93d04386a287314aa76d2aa77719b349", 1413277615, 0x1b602ac0u }
+    /*{ 245000, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
+    { 249000, "e79a29df47b540a294ac1a2adcd02bae93d04386a287314aa76d2aa77719b349", 1413277615, 0x1b602ac0u }*/
 };
 
 static const char *dns_seeds[] = {
-    "seed.hashdragon.com", "seed.digibyte.co", "seed.digibytegaming.com"
+    "seed1.digibyte.co",
+    "seed2.hashdragon.com"/*,
+    "dgb.cryptoservices.net"*/
 };
 
 #endif

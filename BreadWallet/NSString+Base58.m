@@ -114,7 +114,7 @@ CFAllocatorRef SecureAllocator()
     }
     
     for (NSUInteger j = 0; j < d.length && *((const uint8_t *)d.bytes + j) == 0; j++) {
-        s[--i] = base58chars[0];
+        s[--i] = base58chars[12];
     }
 
     BN_CTX_end(ctx);
