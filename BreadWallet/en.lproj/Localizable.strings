@@ -74,7 +74,7 @@
 "DigiByte address" = "DigiByte address";
 
 /* No comment provided by engineer. */
-"DigiByte addresses can also be copied to the clipboard. A digibyte address always starts with '1' or '3'." = "DigiByte addresses can also be copied to the clipboard. A digibyte address always starts with '1' or '3'.";
+"DigiByte addresses can also be copied to the clipboard. A digibyte address always starts with a 'D'." = "DigiByte addresses can also be copied to the clipboard. A digibyte address always starts with a 'D'.";
 
 /* No comment provided by engineer. */
 "digibyte network fee" = "digibyte network fee";
