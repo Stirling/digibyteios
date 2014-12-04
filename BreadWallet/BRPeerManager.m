@@ -77,14 +77,13 @@ static const char *dns_seeds[] = {
 // blockchain checkpoints, these are also used as starting points for partial chain downloads, so they need to be at
 // difficulty transition boundaries in order to verify the block difficulty at the immediately following transition
 static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t target; } checkpoint_array[] = {
-    /*{ 245000, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
-    { 249000, "e79a29df47b540a294ac1a2adcd02bae93d04386a287314aa76d2aa77719b349", 1413277615, 0x1b602ac0u }*/
+    { 0, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1389388394, 0x1e0ffff0u }
 };
 
 static const char *dns_seeds[] = {
-    "seed1.digibyte.co",
-    "seed2.hashdragon.com"/*,
-    "dgb.cryptoservices.net"*/
+    "seed1.digibytewiki.com",
+    "seed2.digihash.co",
+    "dgb.cryptoservices.net"
 };
 
 #endif
