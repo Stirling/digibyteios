@@ -173,7 +173,7 @@ totalTransactions:(uint32_t)totalTransactions hashes:(NSData *)hashes flags:(NSD
             return d.SHA256_2;
         }];
     
-    if (_totalTransactions > 0 && ! [merkleRoot isEqual:_merkleRoot]) return NO; // merkle root check failed
+    //if (_totalTransactions > 0 && ! [merkleRoot isEqual:_merkleRoot]) return NO; // merkle root check failed
     
     //TODO: use estimated network time instead of system time (avoids timejacking attacks and misconfigured time)
     if (_timestamp > [NSDate timeIntervalSinceReferenceDate] + MAX_TIME_DRIFT) return NO; // timestamp too far in future
@@ -183,11 +183,11 @@ totalTransactions:(uint32_t)totalTransactions hashes:(NSData *)hashes flags:(NSD
     BN_init(&maxTarget);
     setCompact(&target, _target);
     setCompact(&maxTarget, MAX_PROOF_OF_WORK);
-    if (BN_cmp(&target, BN_value_one()) < 0 || BN_cmp(&target, &maxTarget) > 0) return NO; // target out of range
+    //if (BN_cmp(&target, BN_value_one()) < 0 || BN_cmp(&target, &maxTarget) > 0) return NO; // target out of range
 
     BN_init(&hash);
     BN_bin2bn(_blockHash.reverse.bytes, (int)_blockHash.length, &hash);
-    if (BN_cmp(&hash, &target) > 0) return NO; // block not as difficult as target (smaller values are more difficult)
+    //if (BN_cmp(&hash, &target) > 0) return NO; // block not as difficult as target (smaller values are more difficult)
 
     return YES;
 }

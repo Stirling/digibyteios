@@ -270,6 +270,10 @@ services:(uint64_t)services
         NSLog(@"%@:%d sending %@", self.host, self.port, type);
 
         [self.outputBuffer appendMessage:message type:type];
+                     NSString* outputContent = [NSString stringWithFormat:@"%@", self.outputBuffer];
+        
+                NSLog(@"outputContent=%@ self.outputBuffer.length=%d   [self.outputStream hasSpaceAvailable]= %hhd",outputContent, self.outputBuffer.length, [self.outputStream hasSpaceAvailable]);
+        
         
         while (self.outputBuffer.length > 0 && [self.outputStream hasSpaceAvailable]) {
             NSInteger l = [self.outputStream write:self.outputBuffer.bytes maxLength:self.outputBuffer.length];
@@ -964,10 +968,15 @@ services:(uint64_t)services
             if (aStream != self.outputStream) return;
         
             while (self.outputBuffer.length > 0 && [self.outputStream hasSpaceAvailable]) {
+                
+                
+                                     NSString* outputContent = [NSString stringWithFormat:@"%@", self.outputBuffer];
+                
+                                     NSLog(@"outputContent=%@   l=%d",outputContent,[self.outputBuffer length]);
                 NSInteger l = [self.outputStream write:self.outputBuffer.bytes maxLength:self.outputBuffer.length];
                 
                 if (l > 0) [self.outputBuffer replaceBytesInRange:NSMakeRange(0, l) withBytes:NULL length:0];
-                //if(self.outputBuffer.length == 0) NSLog(@"%@:%d output buffer cleared", self.host, self.port);
+                if(self.outputBuffer.length == 0) NSLog(@"%@:%d output buffer cleared", self.host, self.port);
             }
 
             break;
@@ -992,6 +1001,7 @@ services:(uint64_t)services
                     }
                     
                     self.msgHeader.length = headerLen + l;
+                    NSLog(@"init- self.msgHeader.length = %d",self.msgHeader.length );
                     
                     // consume one byte at a time, up to the magic number that starts a new message header
                     while (self.msgHeader.length >= sizeof(uint32_t) &&
@@ -1000,7 +1010,7 @@ services:(uint64_t)services
 
                         [self.msgHeader replaceBytesInRange:NSMakeRange(0, 1) withBytes:NULL length:0];
                     }
-                    
+                    NSLog(@"self.msgHeader.length = %d",self.msgHeader.length );
                     if (self.msgHeader.length < HEADER_LENGTH) continue; // wait for more stream input
                 }
                 
