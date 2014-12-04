@@ -233,7 +233,7 @@ services:(uint64_t)services
 - (void)error:(NSString *)message, ...
 {
     va_list args;
-
+    NSLog(@"ERROR:\n %@ \n",message);
     va_start(args, message);
     [self disconnectWithError:[NSError errorWithDomain:@"BreadWallet" code:500
      userInfo:@{NSLocalizedDescriptionKey:[[NSString alloc] initWithFormat:message arguments:args]}]];
@@ -283,7 +283,7 @@ services:(uint64_t)services
 
 - (void)sendVersionMessage
 {
-    NSMutableData *msg = [NSMutableData data];
+   NSMutableData *msg = [NSMutableData data];
     
     [msg appendUInt32:PROTOCOL_VERSION]; // version
     [msg appendUInt64:ENABLED_SERVICES]; // services
@@ -996,9 +996,8 @@ services:(uint64_t)services
                     // consume one byte at a time, up to the magic number that starts a new message header
                     while (self.msgHeader.length >= sizeof(uint32_t) &&
                            [self.msgHeader UInt32AtOffset:0] != BITCOIN_MAGIC_NUMBER) {
-#if DEBUG
                         printf("%c", *(const char *)self.msgHeader.bytes);
-#endif
+
                         [self.msgHeader replaceBytesInRange:NSMakeRange(0, 1) withBytes:NULL length:0];
                     }
                     
