@@ -55,8 +55,7 @@
     hashes:@"3ba3edfd7a7b12b27ac72c3e67768f617fC81bc3888a51323a9fb8aa4b1e5e4a".hexToData flags:@"00".hexToData height:0]
 
 static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t target; } checkpoint_array[] = {
-    { 245000, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
-    { 249000, "e79a29df47b540a294ac1a2adcd02bae93d04386a287314aa76d2aa77719b349", 1413277615, 0x1b602ac0u }
+    { 0, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
 };
 
 static const char *dns_seeds[] = {
