@@ -26,18 +26,18 @@
 #import <Foundation/Foundation.h>
 
 #if BITCOIN_TESTNET
-#define BITCOIN_STANDARD_PORT          12025
+#define BITCOIN_STANDARD_PORT          12340
 #define BITCOIN_REFERENCE_BLOCK_HEIGHT 150000
 #define BITCOIN_REFERENCE_BLOCK_TIME   (1386098130.0 - NSTimeIntervalSince1970)
 #else
-#define BITCOIN_STANDARD_PORT          12024
-#define BITCOIN_REFERENCE_BLOCK_HEIGHT 364350
-#define BITCOIN_REFERENCE_BLOCK_TIME   (1417031237.0 - NSTimeIntervalSince1970)
+#define BITCOIN_STANDARD_PORT          12340
+#define BITCOIN_REFERENCE_BLOCK_HEIGHT 120000
+#define BITCOIN_REFERENCE_BLOCK_TIME   (1430548470.0 - NSTimeIntervalSince1970)
 #endif
 
 #define BITCOIN_TIMEOUT_CODE           1001
 
-// explanation of message types at: https://en.digibyte.it/wiki/Protocol_specification
+// explanation of message types at: https://en.auroracoin.it/wiki/Protocol_specification
 #define MSG_VERSION     @"version"
 #define MSG_VERACK      @"verack"
 #define MSG_ADDR        @"addr"
@@ -61,7 +61,7 @@
 #define MSG_FILTERCLEAR @"filterclear"
 #define MSG_MERKLEBLOCK @"merkleblock"
 #define MSG_ALERT       @"alert"
-#define MSG_REJECT      @"reject" // described in BIP61: https://github.com/digibyte/bips/blob/master/bip-0061.mediawiki
+#define MSG_REJECT      @"reject" // described in BIP61: https://github.com/auroracoin/bips/blob/master/bip-0061.mediawiki
 
 @class BRPeer, BRTransaction, BRMerkleBlock;
 

@@ -25,8 +25,8 @@
 
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
-#import "NSData+DigiByte.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSData+AuroraCoin.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "ccMemory.h"
 #import <openssl/bn.h>
 
@@ -364,7 +364,7 @@ breakout:
     return (d.length == 160/8 + 1) ? [d subdataWithRange:NSMakeRange(1, d.length - 1)] : nil;
 }
 
-- (BOOL)isValidDigiByteAddress
+- (BOOL)isValidAuroraCoinAddress
 {
     NSData *d = self.base58checkToData;
     
@@ -379,11 +379,11 @@ breakout:
     return (version == BITCOIN_PUBKEY_ADDRESS || version == BITCOIN_SCRIPT_ADDRESS) ? YES : NO;
 }
 
-- (BOOL)isValidDigiBytePrivateKey
+- (BOOL)isValidAuroraCoinPrivateKey
 {
     NSData *d = self.base58checkToData;
     
-    if (d.length == 33 || d.length == 34) { // wallet import format: https://en.digibyte.it/wiki/Wallet_import_format
+    if (d.length == 33 || d.length == 34) { // wallet import format: https://en.auroracoin.it/wiki/Wallet_import_format
 #if BITCOIN_TESNET
         return (*(const uint8_t *)d.bytes == BITCOIN_PRIVKEY_TEST) ? YES : NO;
 #else
@@ -402,8 +402,8 @@ breakout:
     else return (self.hexToData.length == 32) ? YES : NO; // hex encoded key
 }
 
-// BIP38 encrypted keys: https://github.com/digibyte/bips/blob/master/bip-0038.mediawiki
-- (BOOL)isValidDigiByteBIP38Key
+// BIP38 encrypted keys: https://github.com/auroracoin/bips/blob/master/bip-0038.mediawiki
+- (BOOL)isValidAuroraCoinBIP38Key
 {
     NSData *d = self.base58checkToData;
 

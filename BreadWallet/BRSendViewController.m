@@ -37,13 +37,13 @@
 #import "BRKey.h"
 #import "BRTransaction.h"
 #import "NSString+Base58.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "NSData+Hash.h"
 
-#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their digibyte address. "\
+#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their auroracoin address. "\
                                          "You can send a payment to anyone with an address.", nil)
-#define CLIPBOARD_TIP NSLocalizedString(@"DigiByte addresses can also be copied to the clipboard. "\
-                                         "A digibyte address always starts with a 'D'.", nil)
+#define CLIPBOARD_TIP NSLocalizedString(@"AuroraCoin addresses can also be copied to the clipboard. "\
+                                         "A auroracoin address always starts with a 'D'.", nil)
 
 #define LOCK @"\xF0\x9F\x94\x92" // unicode lock symbol U+1F512 (utf-8)
 #define REDX @"\xE2\x9D\x8C"     // unicode cross mark U+274C, red x emoji (utf-8)
@@ -122,7 +122,7 @@ static NSString *sanitizeString(NSString *s)
 - (void)handleURL:(NSURL *)url
 {
     //TODO: XXX custom url splash image per: "Providing Launch Images for Custom URL Schemes."
-    if ([url.scheme isEqual:@"digibyte"]) {
+    if ([url.scheme isEqual:@"auroracoin"]) {
         [self confirmRequest:[BRPaymentRequest requestWithURL:url]];
     }
     else {
@@ -152,7 +152,7 @@ static NSString *sanitizeString(NSString *s)
                 
                 if (error) {
                     [[[UIAlertView alloc]
-                      initWithTitle:NSLocalizedString(@"couldn't transmit payment to digibyte network", nil)
+                      initWithTitle:NSLocalizedString(@"couldn't transmit payment to auroracoin network", nil)
                       message:error.localizedDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil)
                       otherButtonTitles:nil] show];
                 }
@@ -187,8 +187,7 @@ static NSString *sanitizeString(NSString *s)
 memo:(NSString *)memo isSecure:(BOOL)isSecure
 {
     BRWalletManager *m = [BRWalletManager sharedInstance];
-    NSString *amountStr = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:amount],
-                           [m localCurrencyStringForAmount:amount]];
+    NSString *amountStr = [NSString stringWithFormat:@"%@", [m stringForAmount:amount]];
     NSString *msg = (isSecure && name.length > 0) ? LOCK @" " : @"";
 
     if (! isSecure && self.protocolRequest.errorMessage.length > 0) msg = [msg stringByAppendingString:REDX @" "];
@@ -200,13 +199,12 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
     }
 
     if (memo.length > 0) msg = [msg stringByAppendingFormat:@"\n\n%@", sanitizeString(memo)];
-    
-    msg = [msg stringByAppendingFormat:@"\n\n%@ (%@)", [m stringForAmount:amount - fee],
-           [m localCurrencyStringForAmount:amount - fee]];
+
+    msg = [msg stringByAppendingFormat:@"\n\n%@", [m stringForAmount:amount - fee]];
 
     if (fee > 0) {
-        msg = [msg stringByAppendingFormat:NSLocalizedString(@"\ndigibyte network fee +%@ (%@)", nil),
-               [m stringForAmount:fee], [m localCurrencyStringForAmount:fee]];
+        msg = [msg stringByAppendingFormat:NSLocalizedString(@"\nauroracoin network fee +%@", nil),
+               [m stringForAmount:fee]];
     }
 
     self.okAddress = nil;
@@ -219,11 +217,11 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
 - (void)confirmRequest:(BRPaymentRequest *)request
 {
     if (! [request isValid]) {
-        if ([request.paymentAddress isValidDigiBytePrivateKey] || [request.paymentAddress isValidDigiByteBIP38Key]) {
+        if ([request.paymentAddress isValidAuroraCoinPrivateKey] || [request.paymentAddress isValidAuroraCoinBIP38Key]) {
             [self confirmSweep:request.paymentAddress];
         }
         else {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"not a valid digibyte address", nil)
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"not a valid auroracoin address", nil)
               message:request.paymentAddress delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil)
               otherButtonTitles:nil] show];
             [self cancel:nil];
@@ -263,7 +261,7 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         self.request = request;
         self.okAddress = request.paymentAddress;
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
-          message:NSLocalizedString(@"\nADDRESS ALREADY USED\n\ndigibyte addresses are intented for single use only\n\n"
+          message:NSLocalizedString(@"\nADDRESS ALREADY USED\n\nauroracoin addresses are intented for single use only\n\n"
                                     "re-use reduces privacy for both you and the recipient and can result in loss if "
                                     "the recipient doesn't directly control the address", nil)
           delegate:self cancelButtonTitle:nil
@@ -276,13 +274,12 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         c.delegate = self;
         c.to = (request.label.length > 0) ? sanitizeString(request.label) :
                [NSString base58WithData:[request.paymentAddress base58ToData]];
-        c.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                  [m localCurrencyStringForAmount:m.wallet.balance]];
+        c.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
         [self.navigationController pushViewController:c animated:YES];
     }
     else if (request.amount < TX_MIN_OUTPUT_AMOUNT) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-          message:[NSString stringWithFormat:NSLocalizedString(@"digibyte payments can't be less than %@", nil),
+          message:[NSString stringWithFormat:NSLocalizedString(@"auroracoin payments can't be less than %@", nil),
                    [m stringForAmount:TX_MIN_OUTPUT_AMOUNT]] delegate:nil
           cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
         [self cancel:nil];
@@ -297,11 +294,11 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
 
         if (self.tx && [m.wallet blockHeightUntilFree:self.tx] <= [[BRPeerManager sharedInstance] lastBlockHeight] +1 &&
             ! self.didAskFee && [[NSUserDefaults standardUserDefaults] boolForKey:SETTINGS_SKIP_FEE_KEY]) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"digibyte network fee", nil)
-              message:[NSString stringWithFormat:NSLocalizedString(@"the standard digibyte network fee for this "
-                                                                   "transaction is %@ (%@)\n\nremoving this fee may "
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"auroracoin network fee", nil)
+              message:[NSString stringWithFormat:NSLocalizedString(@"the standard auroracoin network fee for this "
+                                                                   "transaction is %@\n\nremoving this fee may "
                                                                    "delay confirmation", nil),
-                       [m stringForAmount:self.tx.standardFee], [m localCurrencyStringForAmount:self.tx.standardFee]]
+                       [m stringForAmount:self.tx.standardFee]]
               delegate:self cancelButtonTitle:nil
               otherButtonTitles:NSLocalizedString(@"remove fee", nil), NSLocalizedString(@"continue", nil), nil] show];
             return;
@@ -354,7 +351,7 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         self.protocolRequest = protoReq;
         self.okAddress = address;
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
-          message:NSLocalizedString(@"\nADDRESS ALREADY USED\n\ndigibyte addresses are intented for single use only\n\n"
+          message:NSLocalizedString(@"\nADDRESS ALREADY USED\n\nauroracoin addresses are intented for single use only\n\n"
                                     "re-use reduces privacy for both you and the recipient and can result in loss if "
                                     "the recipient doesn't directly control the address", nil)
           delegate:self cancelButtonTitle:nil
@@ -377,20 +374,19 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         }
         else c.to = [NSString addressWithScriptPubKey:protoReq.details.outputScripts.firstObject];
         
-        c.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                  [m localCurrencyStringForAmount:m.wallet.balance]];
+        c.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
         [self.navigationController pushViewController:c animated:YES];
     }
     else if (amount > 0 && amount < TX_MIN_OUTPUT_AMOUNT) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-          message:[NSString stringWithFormat:NSLocalizedString(@"digibyte payments can't be less than %@", nil),
+          message:[NSString stringWithFormat:NSLocalizedString(@"auroracoin payments can't be less than %@", nil),
                    [m stringForAmount:TX_MIN_OUTPUT_AMOUNT]] delegate:nil
           cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
         [self cancel:nil];
     }
     else if (amount > 0 && outputTooSmall) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-          message:[NSString stringWithFormat:NSLocalizedString(@"digibyte transaction outputs can't be less than %@",
+          message:[NSString stringWithFormat:NSLocalizedString(@"auroracoin transaction outputs can't be less than %@",
                                                                nil), [m stringForAmount:TX_MIN_OUTPUT_AMOUNT]]
           delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
         [self cancel:nil];
@@ -409,11 +405,11 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
 
         if (self.tx && [m.wallet blockHeightUntilFree:self.tx] <= [[BRPeerManager sharedInstance] lastBlockHeight] +1 &&
             ! self.didAskFee && [[NSUserDefaults standardUserDefaults] boolForKey:SETTINGS_SKIP_FEE_KEY]) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"digibyte network fee", nil)
-              message:[NSString stringWithFormat:NSLocalizedString(@"the standard digibyte network fee for this "
-                                                                   "transaction is %@ (%@)\n\nremoving this fee may "
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"auroracoin network fee", nil)
+              message:[NSString stringWithFormat:NSLocalizedString(@"the standard auroracoin network fee for this "
+                                                                   "transaction is %@\n\nremoving this fee may "
                                                                    "delay confirmation", nil),
-                       [m stringForAmount:self.tx.standardFee], [m localCurrencyStringForAmount:self.tx.standardFee]]
+                       [m stringForAmount:self.tx.standardFee]]
               delegate:self cancelButtonTitle:nil
               otherButtonTitles:NSLocalizedString(@"remove fee", nil), NSLocalizedString(@"continue", nil), nil] show];
             return;
@@ -457,7 +453,7 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
 
 - (void)confirmSweep:(NSString *)privKey
 {
-    if (! [privKey isValidDigiBytePrivateKey] && ! [privKey isValidDigiByteBIP38Key]) return;
+    if (! [privKey isValidAuroraCoinPrivateKey] && ! [privKey isValidAuroraCoinBIP38Key]) return;
 
     BRWalletManager *m = [BRWalletManager sharedInstance];
     BRBubbleView *v = [BRBubbleView viewWithText:NSLocalizedString(@"checking private key balance...", nil)
@@ -486,12 +482,10 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
             self.sweepTx = tx;
 
             [[[UIAlertView alloc] initWithTitle:nil message:[NSString
-              stringWithFormat:NSLocalizedString(@"Send %@ (%@) from this private key into your wallet? "
-                                                 "The digibyte network will receive a fee of %@ (%@).", nil),
-              [m stringForAmount:amount], [m localCurrencyStringForAmount:amount], [m stringForAmount:fee],
-              [m localCurrencyStringForAmount:fee]] delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", nil)
-              otherButtonTitles:[NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:amount],
-                                 [m localCurrencyStringForAmount:amount]], nil] show];
+              stringWithFormat:NSLocalizedString(@"Send %@ from this private key into your wallet? "
+                                                 "The auroracoin network will receive a fee of %@.", nil),
+              [m stringForAmount:amount], [m stringForAmount:fee]] delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", nil)
+              otherButtonTitles:[NSString stringWithFormat:@"%@", [m stringForAmount:amount]], nil] show];
         }
         else [self cancel:nil];
     }];
@@ -553,11 +547,11 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         // if the clipboard contains a known txHash, we know it's not a hex encoded private key
         if (d.length == 32 && [[m.wallet.recentTransactions valueForKey:@"txHash"] containsObject:d]) continue;
         
-        if ([req.paymentAddress isValidDigiByteAddress]) {
+        if ([req.paymentAddress isValidAuroraCoinAddress]) {
             self.clipboardText.text = (req.label.length > 0) ? sanitizeString(req.label) : req.paymentAddress;
             break;
         }
-        else if ([req isValid] || [s isValidDigiBytePrivateKey] || [s isValidDigiByteBIP38Key]) {
+        else if ([req isValid] || [s isValidAuroraCoinPrivateKey] || [s isValidAuroraCoinBIP38Key]) {
             self.clipboardText.text = sanitizeString(s);
             break;
         }
@@ -585,7 +579,7 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
                     tipPoint:CGPointMake(self.scanButton.center.x, self.scanButton.center.y - 10.0)
                     tipDirection:BRBubbleTipDirectionDown];
     if (self.showTips) self.tipView.text = [self.tipView.text stringByAppendingString:@" (5/6)"];
-    self.tipView.backgroundColor = [UIColor orangeColor];
+    self.tipView.backgroundColor = [UIColor colorWithRed:0 green:0.408 blue:0.345 alpha:1];
     self.tipView.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0];
     [self.view addSubview:[self.tipView popIn]];
 }
@@ -620,13 +614,13 @@ memo:(NSString *)memo isSecure:(BOOL)isSecure
         // if the clipboard contains a known txHash, we know it's not a hex encoded private key
         if (d.length == 32 && [[m.wallet.recentTransactions valueForKey:@"txHash"] containsObject:d]) continue;
         
-        if ([req isValid] || [s isValidDigiBytePrivateKey] || [s isValidDigiByteBIP38Key]) {
+        if ([req isValid] || [s isValidAuroraCoinPrivateKey] || [s isValidAuroraCoinBIP38Key]) {
             [self performSelector:@selector(confirmRequest:) withObject:req afterDelay:0.1];// delayed to show highlight
             return;
         }
     }
     
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"clipboard doesn't contain a valid digibyte address", nil)
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"clipboard doesn't contain a valid auroracoin address", nil)
       message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
     [self performSelector:@selector(cancel:) withObject:self afterDelay:0.1];
 }
@@ -680,16 +674,16 @@ fromConnection:(AVCaptureConnection *)connection
         NSString *s = o.stringValue;
         BRPaymentRequest *request = [BRPaymentRequest requestWithString:s];
 
-        if (! [request isValid] && ! [s isValidDigiBytePrivateKey] && ! [s isValidDigiByteBIP38Key]) {
+        if (! [request isValid] && ! [s isValidAuroraCoinPrivateKey] && ! [s isValidAuroraCoinBIP38Key]) {
             [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(resetQRGuide) object:nil];
             self.scanController.cameraGuide.image = [UIImage imageNamed:@"cameraguide-red"];
 
-            if ([s hasPrefix:@"digibyte:"] || [request.paymentAddress hasPrefix:@"1"]) {
+            if ([s hasPrefix:@"auroracoin:"] || [request.paymentAddress hasPrefix:@"1"]) {
                 self.scanController.message.text = [NSString stringWithFormat:@"%@\n%@",
-                                                    NSLocalizedString(@"not a valid digibyte address", nil),
+                                                    NSLocalizedString(@"not a valid auroracoin address", nil),
                                                     request.paymentAddress];
             }
-            else self.scanController.message.text = NSLocalizedString(@"not a digibyte QR code", nil);
+            else self.scanController.message.text = NSLocalizedString(@"not a auroracoin QR code", nil);
 
             [self performSelector:@selector(resetQRGuide) withObject:nil afterDelay:0.35];
         }
@@ -803,7 +797,7 @@ fromConnection:(AVCaptureConnection *)connection
     //TODO: don't sign on main thread
     if (! [m.wallet signTransaction:self.tx]) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-          message:NSLocalizedString(@"error signing digibyte transaction", nil) delegate:nil
+          message:NSLocalizedString(@"error signing auroracoin transaction", nil) delegate:nil
           cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil] show];
         [self cancel:nil];
         return;

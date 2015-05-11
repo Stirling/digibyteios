@@ -26,14 +26,14 @@
 #import "BRBIP39Mnemonic.h"
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "ccMemory.h"
 #import <CommonCrypto/CommonKeyDerivation.h>
 
 #define WORDS @"BIP39EnglishWords"
 
 // BIP39 is method for generating a deterministic wallet seed from a mnemonic phrase
-// https://github.com/digibyte/bips/blob/master/bip-0039.mediawiki
+// https://github.com/auroracoin/bips/blob/master/bip-0039.mediawiki
 
 @implementation BRBIP39Mnemonic
 

@@ -80,8 +80,7 @@
         usingBlock:^(NSNotification *note) {
             if ([[BRPeerManager sharedInstance] syncProgress] < 1.0) return; // wait for sync before updating balance
 
-            self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                         [m localCurrencyStringForAmount:m.wallet.balance]];
+            self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
         }];
     
     self.backgroundObserver =
@@ -127,9 +126,7 @@
                       [m amountForString:self.amountField.text];
 
     self.swapLeftLabel.hidden = YES;
-    self.localCurrencyLabel.hidden = NO;
-    self.localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)", (self.swapped) ? [m stringForAmount:amount] :
-                                                                       [m localCurrencyStringForAmount:amount]];
+    self.localCurrencyLabel.hidden = YES;
     self.localCurrencyLabel.textColor = (amount > 0) ? [UIColor grayColor] : [UIColor colorWithWhite:0.75 alpha:1.0];
 }
 
@@ -204,10 +201,6 @@
     NSString *s = (self.swapped) ? self.localCurrencyLabel.text : self.amountField.text;
     uint64_t amount =
         [m amountForLocalCurrencyString:(self.swapped) ? [s substringWithRange:NSMakeRange(1, s.length - 2)] : s];
-
-    self.localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)", (self.swapped) ? [m stringForAmount:amount] :
-                                                                       [m localCurrencyStringForAmount:amount]];
-    self.amountField.text = (self.swapped) ? [m localCurrencyStringForAmount:amount] : [m stringForAmount:amount];
 
     if (amount == 0) {
         self.amountField.placeholder = self.amountField.text;
@@ -354,9 +347,6 @@ replacementString:(NSString *)string
     f.minimumFractionDigits = mindigits;
     textField.text = t;
     if (t.length > 0 && textField.placeholder.length > 0) textField.placeholder = nil;
-    if (t.length == 0 && textField.placeholder.length == 0) {
-        textField.placeholder = (self.swapped) ? [m localCurrencyStringForAmount:0] : [m stringForAmount:0];
-    }
     //self.payButton.enabled = t.length ? YES : NO;
 
     self.swapRightLabel.hidden = YES;

@@ -27,14 +27,14 @@
 
 @class BRPaymentProtocolRequest, BRPaymentProtocolPayment, BRPaymentProtocolACK;
 
-// BIP21 digibyte payment request URI https://github.com/digibyte/bips/blob/master/bip-0021.mediawiki
+// BIP21 auroracoin payment request URI https://github.com/auroracoin/bips/blob/master/bip-0021.mediawiki
 @interface BRPaymentRequest : NSObject
 
 @property (nonatomic, strong) NSString *paymentAddress;
 @property (nonatomic, strong) NSString *label;
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, assign) uint64_t amount;
-@property (nonatomic, strong) NSString *r; // BIP72 URI: https://github.com/digibyte/bips/blob/master/bip-0072.mediawiki
+@property (nonatomic, strong) NSString *r; // BIP72 URI: https://github.com/auroracoin/bips/blob/master/bip-0072.mediawiki
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, readonly) BOOL isValid;
 
@@ -47,7 +47,7 @@
 - (instancetype)initWithURL:(NSURL *)url;
 
 // fetches a BIP70 request over HTTP and calls completion block
-// https://github.com/digibyte/bips/blob/master/bip-0070.mediawiki
+// https://github.com/auroracoin/bips/blob/master/bip-0070.mediawiki
 + (void)fetch:(NSString *)url timeout:(NSTimeInterval)timeout
 completion:(void (^)(BRPaymentProtocolRequest *req, NSError *error))completion;
 

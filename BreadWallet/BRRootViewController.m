@@ -35,9 +35,9 @@
 #import <sys/stat.h>
 #import <mach-o/dyld.h>
 
-#define BALANCE_TIP NSLocalizedString(@"This is your digibyte balance. DigiByte is a currency. "\
+#define BALANCE_TIP NSLocalizedString(@"This is your auroracoin balance. AuroraCoin is a currency. "\
                                        "The exchange rate changes with the market.", nil)
-#define BITS_TIP    NSLocalizedString(@"%@ is for 'bits'. %@ = 1 digibyte.", nil)
+#define BITS_TIP    NSLocalizedString(@"%@ is for 'bits'. %@ = 1 auroracoin.", nil)
 
 #define BACKUP_DIALOG_TIME_KEY @"BACKUP_DIALOG_TIME"
 
@@ -145,7 +145,7 @@
                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
                   message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                             "Any 'jailbreak' app can access any other app's keychain data "
-                                            "(and steal your digibytes). "
+                                            "(and steal your auroracoins). "
                                             "Wipe this wallet immediately and restore on a secure device.", nil)
                  delegate:self cancelButtonTitle:NSLocalizedString(@"ignore", nil)
                  otherButtonTitles:NSLocalizedString(@"wipe", nil), nil] show];
@@ -154,7 +154,7 @@
                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
                   message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                             "Any 'jailbreak' app can access any other app's keychain data "
-                                            "(and steal your digibytes).", nil)
+                                            "(and steal your auroracoins).", nil)
                   delegate:self cancelButtonTitle:NSLocalizedString(@"ignore", nil)
                   otherButtonTitles:NSLocalizedString(@"close app", nil), nil] show];
             }
@@ -188,8 +188,8 @@
             if ([[BRPeerManager sharedInstance] syncProgress] < 1.0) return; // wait for sync before updating balance
             [self showBackupDialogIfNeeded];
             if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-            self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                         [m localCurrencyStringForAmount:m.wallet.balance]];
+            self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]
+                                         ];
             [self.receiveViewController updateAddress];
             
             // TODO: XXXX show new tx indicator if appropriate
@@ -206,8 +206,6 @@
             if (p.lastBlockHeight + 2016/2 < p.estimatedBlockHeight &&
                 m.seedCreationTime + 60*60*24 < [NSDate timeIntervalSinceReferenceDate]) {
                 self.percent.hidden = NO;
-                self.navigationItem.titleView = nil;
-                self.navigationItem.title = NSLocalizedString(@"syncing...", nil);
             }
         }];
     
@@ -218,8 +216,7 @@
             [self showBackupDialogIfNeeded];
             self.percent.hidden = YES;
             if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-            self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                         [m localCurrencyStringForAmount:m.wallet.balance]];
+            self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
             [self.receiveViewController updateAddress];
         }];
     
@@ -231,8 +228,7 @@
             [self showBackupDialogIfNeeded];
             self.percent.hidden = YES;
             if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-            self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                         [m localCurrencyStringForAmount:m.wallet.balance]];
+            self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
             [self.receiveViewController updateAddress];
         }];
     
@@ -242,8 +238,8 @@
     [self.reachability startNotifier];
 
     self.navigationController.delegate = self;
-    self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                 [m localCurrencyStringForAmount:m.wallet.balance]];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]
+                                 ];
 
 #if BITCOIN_TESTNET
     UILabel *label = [UILabel new];
@@ -367,7 +363,7 @@
     
     if (sender == self) { // show backup phrase
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
-          message:NSLocalizedString(@"\nDO NOT let anyone see your backup phrase or they can spend your digibytes.\n\n"
+          message:NSLocalizedString(@"\nDO NOT let anyone see your backup phrase or they can spend your auroracoins.\n\n"
                                     "DO NOT take a screenshot. Screenshots are visible to other apps and devices.\n",
                                     nil) delegate:[[(id)segue.destinationViewController viewControllers] firstObject]
           cancelButtonTitle:NSLocalizedString(@"cancel", nil) otherButtonTitles:NSLocalizedString(@"show", nil), nil]
@@ -570,7 +566,7 @@
     [defs setDouble:now forKey:BACKUP_DIALOG_TIME_KEY];
     
     [[[UIAlertView alloc]
-      initWithTitle:(first) ? NSLocalizedString(@"you received digibyte!", nil) : NSLocalizedString(@"IMPORTANT", nil)
+      initWithTitle:(first) ? NSLocalizedString(@"you received auroracoin!", nil) : NSLocalizedString(@"IMPORTANT", nil)
       message:[NSString
                stringWithFormat:NSLocalizedString(@"\n%@\n\nwrite down your backup phrase and use it to restore on "
                                                   "another device if this one is ever lost or broken", nil),
@@ -604,7 +600,7 @@
                     tipPoint:CGPointMake(b.center.x, b.frame.origin.y + b.frame.size.height - 10)
                     tipDirection:BRBubbleTipDirectionUp];
     if (self.showTips) self.tipView.text = [self.tipView.text stringByAppendingString:@" (1/6)"];
-    self.tipView.backgroundColor = [UIColor orangeColor];
+    self.tipView.backgroundColor = [UIColor colorWithRed:0 green:0.408 blue:0.345 alpha:1];
     self.tipView.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0];
     self.tipView.userInteractionEnabled = NO;
     [self.view addSubview:[self.tipView popIn]];
@@ -790,8 +786,7 @@ viewControllerAfterViewController:(UIViewController *)viewController
             item.rightBarButtonItem = rightButton;
             item.titleView = titleView;
             item.leftBarButtonItem.image = [UIImage imageNamed:@"x"];
-            item.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                          [m localCurrencyStringForAmount:m.wallet.balance]];
+            item.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
             [v addSubview:to.view];
             [transitionContext completeTransition:YES];
         }];

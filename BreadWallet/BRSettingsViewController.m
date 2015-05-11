@@ -106,8 +106,7 @@
                 else self.transactions = [NSArray arrayWithArray:a];
 
                 if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-                self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                             [m localCurrencyStringForAmount:m.wallet.balance]];
+                self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
 
                 if (self.transactions.firstObject != tx) {
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
@@ -145,8 +144,7 @@
             [[NSNotificationCenter defaultCenter] addObserverForName:BRPeerManagerSyncFinishedNotification object:nil
             queue:nil usingBlock:^(NSNotification *note) {
                 if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-                self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                             [m localCurrencyStringForAmount:m.wallet.balance]];
+                self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
             }];
     }
     
@@ -155,8 +153,7 @@
             [[NSNotificationCenter defaultCenter] addObserverForName:BRPeerManagerSyncFailedNotification object:nil
             queue:nil usingBlock:^(NSNotification *note) {
                 if (! m.didAuthenticate) self.navigationItem.titleView = self.logo;
-                self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [m stringForAmount:m.wallet.balance],
-                                             [m localCurrencyStringForAmount:m.wallet.balance]];
+                self.navigationItem.title = [NSString stringWithFormat:@"%@", [m stringForAmount:m.wallet.balance]];
             }];
     }
 }
@@ -333,7 +330,7 @@
             return 2;
 
         case 3:
-            return 2;
+            return nil;
 
         case 4:
             return 1;
@@ -351,7 +348,7 @@
                     *toggleIdent = @"ToggleCell", *disclosureIdent = @"DisclosureCell", *restoreIdent = @"RestoreCell",
                     *selectorIdent = @"SelectorCell", *selectorOptionCell = @"SelectorOptionCell";
     UITableViewCell *cell = nil;
-    UILabel *textLabel, *unconfirmedLabel, *sentLabel, *localCurrencyLabel, *balanceLabel, *localBalanceLabel,
+    UILabel *textLabel, *unconfirmedLabel, *sentLabel, *balanceLabel, *localBalanceLabel,
             *toggleLabel;
     UISwitch *toggleSwitch;
     BRCopyLabel *detailTextLabel;
@@ -382,7 +379,6 @@
                 textLabel = (id)[cell viewWithTag:1];
                 detailTextLabel = (id)[cell viewWithTag:2];
                 unconfirmedLabel = (id)[cell viewWithTag:3];
-                localCurrencyLabel = (id)[cell viewWithTag:5];
                 sentLabel = (id)[cell viewWithTag:6];
                 balanceLabel = (id)[cell viewWithTag:7];
                 localBalanceLabel = (id)[cell viewWithTag:8];
@@ -399,8 +395,6 @@
                 unconfirmedLabel.hidden = NO;
                 detailTextLabel.text = [self dateForTx:tx];
                 balanceLabel.text = (m.didAuthenticate) ? [m stringForAmount:balance] : nil;
-                localBalanceLabel.text = (m.didAuthenticate) ?
-                    [NSString stringWithFormat:@"(%@)", [m localCurrencyStringForAmount:balance]] : nil;
 
                 if (confirms == 0 && ! [m.wallet transactionIsValid:tx]) {
                     unconfirmedLabel.text = NSLocalizedString(@"INVALID", nil);
@@ -426,22 +420,16 @@
                 
                 if (! [m.wallet addressForTransaction:tx] && sent > 0) {
                     textLabel.text = [m stringForAmount:sent];
-                    localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [m localCurrencyStringForAmount:sent]];
                     sentLabel.text = NSLocalizedString(@"moved", nil);
                     sentLabel.textColor = [UIColor blackColor];
                 }
                 else if (sent > 0) {
                     textLabel.text = [m stringForAmount:received - sent];
-                    localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [m localCurrencyStringForAmount:received - sent]];
                     sentLabel.text = NSLocalizedString(@"sent", nil);
                     sentLabel.textColor = [UIColor colorWithRed:1.0 green:0.33 blue:0.33 alpha:1.0];
                 }
                 else {
                     textLabel.text = [m stringForAmount:received];
-                    localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [m localCurrencyStringForAmount:received]];
                     sentLabel.text = NSLocalizedString(@"received", nil);
                     sentLabel.textColor = [UIColor colorWithRed:0.0 green:0.75 blue:0.0 alpha:1.0];
                 }
@@ -508,11 +496,6 @@
         case 3:
             switch (indexPath.row) {
                 case 0:
-                    cell = [tableView dequeueReusableCellWithIdentifier:selectorIdent];
-                    cell.detailTextLabel.text = m.localCurrencyCode;
-                    break;
-
-                case 1:
                     cell = [tableView dequeueReusableCellWithIdentifier:toggleIdent];
                     toggleLabel = (id)[cell viewWithTag:2];
                     toggleSwitch = (id)[cell viewWithTag:3];
@@ -557,10 +540,8 @@
         case 3:
             return NSLocalizedString(@"rescan blockchain if you think you may have missing transactions, "
                                      "or are having trouble sending (rescanning can take several minutes)", nil);
-
         case 4:
-            return NSLocalizedString(@"digibyte network fees are only optional for high priority transactions "
-                                     "(removal may cause delays)", nil);
+            return nil;
 
         default:
             NSAssert(FALSE, @"%s:%d %s: unkown section %d", __FILE__, __LINE__,  __func__, (int)section);
@@ -644,7 +625,6 @@
 
     if (tableView == self.selectorController.tableView) {
         self.selectedOption = self.selectorOptions[indexPath.row];
-        m.localCurrencyCode = self.selectedOption;
 
         [tableView reloadData];
         [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -714,7 +694,7 @@
                 case 1: // backup phrase
                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"WARNING", nil)
                       message:NSLocalizedString(@"\nDO NOT let anyone see your backup phrase or they can spend your "
-                                                "digibytes.\n\nDO NOT take a screenshot. Screenshots are visible to "
+                                                "auroracoins.\n\nDO NOT take a screenshot. Screenshots are visible to "
                                                 "other apps and devices.\n\nDO NOT type your backup phrase into "
                                                 "password managers or elsewhere. Other devices may be infected.\n",
                                                 nil) delegate:self
@@ -743,39 +723,6 @@
                 default:
                     NSAssert(FALSE, @"%s:%d %s: unkown indexPath.row %d", __FILE__, __LINE__,  __func__,
                              (int)indexPath.row);
-            }
-
-            break;
-
-        case 3:
-            switch (indexPath.row) {
-                case 0: // local currency
-                    self.selectorOptions = [m.currencyCodes
-                                            sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-                    self.selectedOption = m.localCurrencyCode;
-                    self.selectorController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-                    self.selectorController.transitioningDelegate = self;
-                    self.selectorController.tableView.dataSource = self;
-                    self.selectorController.tableView.delegate = self;
-                    self.selectorController.tableView.backgroundColor = [UIColor clearColor];
-                    self.selectorController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-                    self.selectorController.title = NSLocalizedString(@"local currency", nil);
-                    [self.navigationController pushViewController:self.selectorController animated:YES];
-
-                    NSUInteger i = [self.selectorOptions indexOfObject:self.selectedOption];
-
-                    if (i != NSNotFound) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.selectorController.tableView
-                             scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]
-                             atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-                        });
-                    }
-
-                    break;
-
-                case 1: // remove standard fees
-                    break;
             }
 
             break;

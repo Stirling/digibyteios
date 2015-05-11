@@ -27,7 +27,7 @@
 #import "BRMnemonic.h"
 
 // BIP39 is method for generating a deterministic wallet seed from a mnemonic phrase
-// https://github.com/digibyte/bips/blob/master/bip-0039.mediawiki
+// https://github.com/auroracoin/bips/blob/master/bip-0039.mediawiki
 
 @interface BRBIP39Mnemonic : NSObject<BRMnemonic>
 

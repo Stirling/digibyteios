@@ -34,22 +34,22 @@
 #import "BRTransactionEntity.h"
 #import "BRAddressEntity.h"
 #import "NSString+Base58.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "NSManagedObject+Sugar.h"
 #import "Reachability.h"
 
-#define BTC         @"\xC9\x83"     // capital B with stroke (utf-8)
-#define BITS        @"\xC6\x80"     // lowercase b with stroke (utf-8)
+#define BTC         @"AUR"     // capital B with stroke (utf-8)
+#define BITS        @"AUR"     // lowercase b with stroke (utf-8)
 #define NARROW_NBSP @"\xE2\x80\xAF" // narrow no-break space (utf-8)
+#define DEFAULT_CURRENCY_PRICE 500.0
 
 #define BASE_URL    @"https://blockchain.info"
 #define UNSPENT_URL BASE_URL "/unspent?active="
 #define TICKER_URL  BASE_URL "/ticker"
+#define DGB_BTC_TICKER_URL @"http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=167"
 
 #define SEED_ENTROPY_LENGTH    (128/8)
 #define SEC_ATTR_SERVICE       @"org.voisine.breadwallet"
-#define DEFAULT_CURRENCY_PRICE 500.0
-#define DEFAULT_CURRENCY_CODE  @"USD"
 
 #define LOCAL_CURRENCY_SYMBOL_KEY @"LOCAL_CURRENCY_SYMBOL"
 #define LOCAL_CURRENCY_CODE_KEY   @"LOCAL_CURRENCY_CODE"
@@ -230,8 +230,8 @@ static NSData *getKeychainData(NSString *key, NSString *authprompt)
     self.format.internationalCurrencySymbol = self.format.currencySymbol;
     self.format.minimumFractionDigits = 0; // iOS 8 bug, minimumFractionDigits now has to be set after currencySymbol
     self.format.maximumFractionDigits = 2;
-//    self.format.currencySymbol = BTC NARROW_NBSP;
-//    self.format.maximumFractionDigits = 8;
+    self.format.currencySymbol = BTC NARROW_NBSP;
+    self.format.maximumFractionDigits = 8;
 
     self.format.maximum = @(MAX_MONEY/(int64_t)pow(10.0, self.format.maximumFractionDigits));
 
@@ -502,67 +502,57 @@ static NSData *getKeychainData(NSString *key, NSString *authprompt)
 
     if (self.reachability.currentReachabilityStatus == NotReachable) return;
 
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:TICKER_URL]
-                         cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
-
-    [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue currentQueue]
+    NSURLRequest *dgbBtcReq = [NSURLRequest requestWithURL:[NSURL URLWithString:DGB_BTC_TICKER_URL]
+                                            cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+    
+    [NSURLConnection sendAsynchronousRequest:dgbBtcReq queue:[NSOperationQueue currentQueue]
     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
             NSLog(@"%@", connectionError);
             return;
         }
 
-        NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
         NSError *error = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+
+        NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 
         _localCurrencyCode = [defs stringForKey:LOCAL_CURRENCY_CODE_KEY];
         if (! self.localCurrencyCode) _localCurrencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
 
-        if (error || ! [json isKindOfClass:[NSDictionary class]] ||
-            ! [json[DEFAULT_CURRENCY_CODE] isKindOfClass:[NSDictionary class]] ||
-            ! [json[DEFAULT_CURRENCY_CODE][@"last"] isKindOfClass:[NSNumber class]] ||
-            ([json[self.localCurrencyCode] isKindOfClass:[NSDictionary class]] &&
-             (! [json[self.localCurrencyCode][@"last"] isKindOfClass:[NSNumber class]] ||
-              ! [json[self.localCurrencyCode][@"symbol"] isKindOfClass:[NSString class]]))) {
-            NSLog(@"unexpected response from %@:\n%@", req.URL.host,
-                  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            return;
-        }
-
-        // if local currency is missing, use default
-        if (! [json[self.localCurrencyCode] isKindOfClass:[NSDictionary class]]) {
-            self.localFormat.currencyCode = _localCurrencyCode = DEFAULT_CURRENCY_CODE;
-        }
-        else {
-            self.localFormat.currencySymbol = json[self.localCurrencyCode][@"symbol"];
-            self.localFormat.currencyCode = self.localCurrencyCode;
-        }
-
-        _localCurrencyPrice = [json[self.localCurrencyCode][@"last"] doubleValue];
-        self.localFormat.maximum = @((MAX_MONEY/SATOSHIS)*self.localCurrencyPrice);
-        _currencyCodes = [NSArray arrayWithArray:json.allKeys];
         
-        if ([self.localCurrencyCode isEqual:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]]) {
-            [defs removeObjectForKey:LOCAL_CURRENCY_SYMBOL_KEY];
-            [defs removeObjectForKey:LOCAL_CURRENCY_CODE_KEY];
-        }
-        else {
-            [defs setObject:self.localFormat.currencySymbol forKey:LOCAL_CURRENCY_SYMBOL_KEY];
-            [defs setObject:self.localCurrencyCode forKey:LOCAL_CURRENCY_CODE_KEY];
-        }
-
-        [defs setObject:@(self.localCurrencyPrice) forKey:LOCAL_CURRENCY_PRICE_KEY];
-        [defs setObject:self.currencyCodes forKey:CURRENCY_CODES_KEY];
-        [defs synchronize];
-        NSLog(@"exchange rate updated to %@/%@", [self localCurrencyStringForAmount:SATOSHIS],
-              [self stringForAmount:SATOSHIS]);
-
-        if (! self.wallet) return;
+        NSNumber *dgbBtcValue = json[@"return"][@"markets"][@"DGB"][@"lasttradeprice"];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:BRWalletBalanceChangedNotification object:nil];
-        });
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:TICKER_URL]
+                                             cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+        
+        [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue currentQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                   if (connectionError) {
+                                       NSLog(@"%@", connectionError);
+                                       return;
+                                   }
+                                   
+                                   NSError *error = nil;
+                                   NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+                                   NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                   NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+                                   NSString *symbol = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+                                   
+                                   
+                                   [defs setObject:symbol forKey:LOCAL_CURRENCY_SYMBOL_KEY];
+                                   [defs setObject:currencyCode forKey:LOCAL_CURRENCY_CODE_KEY];
+                                   
+                                   NSNumber *lastPrice = json[currencyCode][@"last"];
+                                   
+                                   [defs setObject:[NSNumber numberWithFloat:(lastPrice.floatValue * dgbBtcValue.floatValue)] forKey:LOCAL_CURRENCY_PRICE_KEY];
+                                   [defs synchronize];
+                                   if (! self.wallet) return;
+                                   
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       [[NSNotificationCenter defaultCenter] postNotificationName:BRWalletBalanceChangedNotification object:nil];
+                                   });
+                               }];
     }];
 }
 
@@ -573,7 +563,7 @@ completion:(void (^)(BRTransaction *tx, NSError *error))completion
 {
     if (! completion) return;
 
-    if ([privKey isValidDigiByteBIP38Key]) {
+    if ([privKey isValidAuroraCoinBIP38Key]) {
         UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"password protected key" message:nil delegate:self
                           cancelButtonTitle:@"cancel" otherButtonTitles:@"ok", nil];
 
@@ -736,28 +726,6 @@ completion:(void (^)(BRTransaction *tx, NSError *error))completion
 
     p /= 10;
     return (local < 0) ? -(amount/p)*p : (amount/p)*p;
-}
-
-- (NSString *)localCurrencyStringForAmount:(int64_t)amount
-{
-    if (amount == 0) return [self.localFormat stringFromNumber:@(0)];
-
-    NSString *ret = [self.localFormat stringFromNumber:@(self.localCurrencyPrice*amount/SATOSHIS)];
-
-    // if the amount is too small to be represented in local currency (but is != 0) then return a string like "<$0.01"
-    if (amount > 0 && self.localCurrencyPrice*amount/SATOSHIS + DBL_EPSILON <
-        1.0/pow(10.0, self.localFormat.maximumFractionDigits)) {
-        ret = [@"<" stringByAppendingString:[self.localFormat
-               stringFromNumber:@(1.0/pow(10.0, self.localFormat.maximumFractionDigits))]];
-    }
-    else if (amount < 0 && self.localCurrencyPrice*amount/SATOSHIS - DBL_EPSILON >
-             -1.0/pow(10.0, self.localFormat.maximumFractionDigits)) {
-        // technically should be '>', but '<' is more intuitive
-        ret = [@"<" stringByAppendingString:[self.localFormat
-               stringFromNumber:@(-1.0/pow(10.0, self.localFormat.maximumFractionDigits))]];
-    }
-
-    return ret;
 }
 
 #pragma mark - UIAlertViewDelegate

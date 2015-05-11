@@ -1,5 +1,5 @@
 //
-//  NSMutableData+DigiByte.m
+//  NSMutableData+AuroraCoin.m
 //  BreadWallet
 //
 //  Created by Aaron Voisine on 5/20/13.
@@ -23,12 +23,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSMutableData+DigiByte.h"
-#import "NSData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
+#import "NSData+AuroraCoin.h"
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
 
-@implementation NSMutableData (DigiByte)
+@implementation NSMutableData (AuroraCoin)
 
 + (NSMutableData *)secureData
 {
@@ -122,7 +122,7 @@
     [self appendBytes:s.UTF8String length:l];
 }
 
-#pragma mark - digibyte script
+#pragma mark - auroracoin script
 
 - (void)appendScriptPushData:(NSData *)d
 {
@@ -177,7 +177,7 @@
     }
 }
 
-#pragma mark - digibyte protocol
+#pragma mark - auroracoin protocol
 
 - (void)appendMessage:(NSData *)message type:(NSString *)type;
 {

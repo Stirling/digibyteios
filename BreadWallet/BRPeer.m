@@ -26,9 +26,9 @@
 #import "BRPeer.h"
 #import "BRTransaction.h"
 #import "BRMerkleBlock.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "NSString+Base58.h"
-#import "NSData+DigiByte.h"
+#import "NSData+AuroraCoin.h"
 #import "NSData+Hash.h"
 #import <arpa/inet.h>
 #import "Reachability.h"
@@ -38,9 +38,9 @@
 
 #define HEADER_LENGTH      24
 #define MAX_MSG_LENGTH     0x02000000
-#define MAX_GETDATA_HASHES 50000
+#define MAX_GETDATA_HASHES 500000
 #define ENABLED_SERVICES   0     // we don't provide full blocks to remote nodes
-#define PROTOCOL_VERSION   70002
+#define PROTOCOL_VERSION   2000001
 #if TX_FEE_0_8_RULES
 #define MIN_PROTO_VERSION  70001 // peers earlier than this protocol version not supported (SPV mode required)
 #else
@@ -864,7 +864,7 @@ services:(uint64_t)services
 
 - (void)acceptMerkleblockMessage:(NSData *)message
 {
-    // DigiByte nodes don't support querying arbitrary transactions, only transactions not yet accepted in a block. After
+    // AuroraCoin nodes don't support querying arbitrary transactions, only transactions not yet accepted in a block. After
     // a merkleblock message, the remote node is expected to send tx messages for the tx referenced in the block. When a
     // non-tx message is received we should have all the tx in the merkleblock.
 
@@ -897,7 +897,7 @@ services:(uint64_t)services
     }
 }
 
-// described in BIP61: https://github.com/digibyte/bips/blob/master/bip-0061.mediawiki
+// described in BIP61: https://github.com/auroracoin/bips/blob/master/bip-0061.mediawiki
 - (void)acceptRejectMessage:(NSData *)message
 {
     NSUInteger off = 0, l = 0;

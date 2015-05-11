@@ -116,7 +116,7 @@
 
     if (self.sent > 0 && fee > 0 && fee != UINT64_MAX) {
         [text addObject:@""];
-        [detail addObject:NSLocalizedString(@"digibyte network fee", nil)];
+        [detail addObject:NSLocalizedString(@"auroracoin network fee", nil)];
         [amount addObject:@(-fee)];
     }
     
@@ -229,13 +229,9 @@
 
                     if (self.moved > 0) {
                         textLabel.text = [m stringForAmount:self.moved];
-                        localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                                   [m localCurrencyStringForAmount:self.moved]];
                     }
                     else {
                         textLabel.text = [m stringForAmount:self.received - self.sent];
-                        localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                                   [m localCurrencyStringForAmount:self.received - self.sent]];
                     }
                     
                     break;
@@ -265,9 +261,6 @@
                 amountLabel.textColor = (self.sent > 0) ? [UIColor colorWithRed:1.0 green:0.33 blue:0.33 alpha:1.0] :
                                         [UIColor colorWithRed:0.0 green:0.75 blue:0.0 alpha:1.0];
                 localCurrencyLabel.textColor = amountLabel.textColor;
-                localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                           [m localCurrencyStringForAmount:[self.outputAmount[indexPath.row]
-                                                                            longLongValue]]];
             }
             else if (self.transaction.inputAddresses[indexPath.row] != (id)[NSNull null]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];

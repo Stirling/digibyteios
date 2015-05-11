@@ -30,9 +30,9 @@
 #import "BRWallet.h"
 #import "BRBubbleView.h"
 
-#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your digibyte address. Anyone can send "\
-                    "digibytes to your wallet by transferring them to your address.", nil)
-#define ADDRESS_TIP NSLocalizedString(@"This is your digibyte address. Tap to copy it or send it by email or sms. The "\
+#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your auroracoin address. Anyone can send "\
+                    "auroracoins to your wallet by transferring them to your address.", nil)
+#define ADDRESS_TIP NSLocalizedString(@"This is your auroracoin address. Tap to copy it or send it by email or sms. The "\
                     "address will change each time you receive funds, but old addresses always work.", nil)
 
 @interface BRReceiveViewController ()
@@ -161,7 +161,7 @@
                     tipPoint:[self.qrView.superview convertPoint:self.qrView.center toView:self.view]
                     tipDirection:BRBubbleTipDirectionUp];
     if (self.showTips) self.tipView.text = [self.tipView.text stringByAppendingString:@" (3/6)"];
-    self.tipView.backgroundColor = [UIColor orangeColor];
+    self.tipView.backgroundColor = [UIColor colorWithRed:0 green:0.408 blue:0.345 alpha:1];
     self.tipView.font = [UIFont fontWithName:@"HelveticaNeue" size:15.0];
     [self.view addSubview:[self.tipView popIn]];
 }
@@ -172,7 +172,7 @@
 
     UIActionSheet *a = [UIActionSheet new];
 
-    a.title = [NSString stringWithFormat:NSLocalizedString(@"Receive digibytes at this address: %@", nil),
+    a.title = [NSString stringWithFormat:NSLocalizedString(@"Receive auroracoins at this address: %@", nil),
                self.paymentAddress];
     a.delegate = self;
     [a addButtonWithTitle:NSLocalizedString(@"copy to clipboard", nil)];
@@ -205,13 +205,13 @@
     }
     else if ([title isEqual:NSLocalizedString(@"send as email", nil)]) {
         //TODO: implement BIP71 payment protocol mime attachement
-        // https://github.com/digibyte/bips/blob/master/bip-0071.mediawiki
+        // https://github.com/auroracoin/bips/blob/master/bip-0071.mediawiki
         
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *c = [MFMailComposeViewController new];
             
-            [c setSubject:NSLocalizedString(@"DigiByte address", nil)];
-            [c setMessageBody:[@"digibyte:" stringByAppendingString:self.paymentAddress] isHTML:NO];
+            [c setSubject:NSLocalizedString(@"AuroraCoin address", nil)];
+            [c setMessageBody:[@"auroracoin:" stringByAppendingString:self.paymentAddress] isHTML:NO];
             c.mailComposeDelegate = self;
             [self.navigationController presentViewController:c animated:YES completion:nil];
             c.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];
@@ -225,7 +225,7 @@
         if ([MFMessageComposeViewController canSendText]) {
             MFMessageComposeViewController *c = [MFMessageComposeViewController new];
             
-            c.body = [@"digibyte:" stringByAppendingString:self.paymentAddress];
+            c.body = [@"auroracoin:" stringByAppendingString:self.paymentAddress];
             c.messageComposeDelegate = self;
             [self.navigationController presentViewController:c animated:YES completion:nil];
             c.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];

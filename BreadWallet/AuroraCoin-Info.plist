@@ -5,44 +5,44 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>ƀread</string>
+	<string>AuroraWallet</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>DigiByte Payment Request</string>
+			<string>AuroraCoin Payment Request</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>digibyte.paymentrequest</string>
+				<string>auroracoin.paymentrequest</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>DigiByte Payment</string>
+			<string>AuroraCoin Payment</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>digibyte.payment</string>
+				<string>auroracoin.payment</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>DigiByte Payment ACK</string>
+			<string>AuroraCoin Payment ACK</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>digibyte.paymentack</string>
+				<string>auroracoin.paymentack</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>digibyte.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>auroracoin.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -50,7 +50,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5</string>
+	<string>0.8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -59,10 +59,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>digibyte</string>
+			<string>auroracoin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>digibyte</string>
+				<string>auroracoin</string>
 			</array>
 		</dict>
 		<dict>
@@ -77,7 +77,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5.0</string>
+	<string>9.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -108,13 +108,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>DigiByte Payment Request</string>
+			<string>AuroraCoin Payment Request</string>
 			<key>UTTypeIdentifier</key>
-			<string>digibyte.paymentrequest</string>
+			<string>auroracoin.paymentrequest</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/digibyte-paymentrequest</string>
+				<string>application/auroracoin-paymentrequest</string>
 			</dict>
 		</dict>
 		<dict>
@@ -123,13 +123,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>DigiByte Payment</string>
+			<string>AuroraCoin Payment</string>
 			<key>UTTypeIdentifier</key>
-			<string>digibyte.payment</string>
+			<string>auroracoin.payment</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/digibyte-payment</string>
+				<string>application/auroracoin-payment</string>
 			</dict>
 		</dict>
 		<dict>
@@ -138,13 +138,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>DigiByte Payment ACK</string>
+			<string>AuroraCoin Payment ACK</string>
 			<key>UTTypeIdentifier</key>
-			<string>digibyte.paymentack</string>
+			<string>auroracoin.paymentack</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/digibyte-paymentack</string>
+				<string>application/auroracoin-paymentack</string>
 			</dict>
 		</dict>
 	</array>

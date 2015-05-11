@@ -34,7 +34,7 @@
 #import "BRMerkleBlock.h"
 #import "BRPaymentProtocol.h"
 #import "NSData+Hash.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import "NSString+Base58.h"
 
 //#define SKIP_BIP38 1
@@ -74,19 +74,19 @@
 #if ! BITCOIN_TESTNET
 - (void)testKeyWithPrivateKey
 {
-    XCTAssertFalse([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRz" isValidDigiBytePrivateKey],
-                  @"[NSString+Base58 isValidDigiBytePrivateKey]");
+    XCTAssertFalse([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRz" isValidAuroraCoinPrivateKey],
+                  @"[NSString+Base58 isValidAuroraCoinPrivateKey]");
 
-    XCTAssertTrue([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy" isValidDigiBytePrivateKey],
-                 @"[NSString+Base58 isValidDigiBytePrivateKey]");
+    XCTAssertTrue([@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy" isValidAuroraCoinPrivateKey],
+                 @"[NSString+Base58 isValidAuroraCoinPrivateKey]");
 
     // mini private key format
     BRKey *key = [BRKey keyWithPrivateKey:@"S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"];
     
     NSLog(@"privKey:S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy = %@", key.address);
     XCTAssertEqualObjects(@"1CciesT23BNionJeXrbxmjc7ywfiyM4oLW", key.address, @"[BRKey keyWithPrivateKey:]");
-    XCTAssertTrue([@"SzavMBLoXU6kDrqtUVmffv" isValidDigiBytePrivateKey],
-                 @"[NSString+Base58 isValidDigiBytePrivateKey]");
+    XCTAssertTrue([@"SzavMBLoXU6kDrqtUVmffv" isValidAuroraCoinPrivateKey],
+                 @"[NSString+Base58 isValidAuroraCoinPrivateKey]");
 
     // old mini private key format
     key = [BRKey keyWithPrivateKey:@"SzavMBLoXU6kDrqtUVmffv"];
@@ -321,7 +321,7 @@
 //TODO: test valid request with no arguments
 //TODO: test valid request with known arguments
 //TODO: test valid request with unkown arguments
-//TODO: test invalid digibyte address
+//TODO: test invalid auroracoin address
 //TODO: test invalid request with unkown required arguments
 
 #pragma mark - testTransaction
@@ -762,7 +762,7 @@
 //TODO: test gap limit with gaps in address chain less than the limit
 //TODO: test removing a transaction that other transansactions depend on
 //TODO: test tx ordering for multiple tx with same block height
-//TODO: port all applicable tests from digibytej and digibytecore
+//TODO: port all applicable tests from auroracoinj and auroracoincore
 
 - (void)testWallet
 {
@@ -1010,7 +1010,7 @@
         "f07906b33d996f09456a51330053c8532217bc9c70aa824a490de46d32523140367c210d66f0f5d7b7acc9fc5582ac1c49e21a85af3aca"
         "446f39ee463cb2f90a4292901d9722c29df370127bc4fee68d3218fc0b3e4f509edd210aa53b4bef0cc590bd63b961c952449dfceecfda"
         "7489114450e3a366fda45b345a241c9d4d7444e3eb97476d5a213552cc687a3b599ac0684877f7506fcbf144c0ecc6ec4df3db71271f4e"
-        "8f15140222849e01d4b87a834cc06a2dd125ad186366403356f6f776eebf28550985eab0353ad9123631f169ccdb9b205633ae1f4681b1"
+        "8f15123412849e01d4b87a834cc06a2dd125ad186366403356f6f776eebf28550985eab0353ad9123631f169ccdb9b205633ae1f4681b1"
         "705359553ee0a840830820400308202e8a003020102020100300d06092a864886f70d01010505003063310b30090603550406130255533"
         "121301f060355040a131854686520476f2044616464792047726f75702c20496e632e3131302f060355040b1328476f204461646479204"
         "36c61737320322043657274696669636174696f6e20417574686f72697479301e170d3034303632393137303632305a170d33343036323"

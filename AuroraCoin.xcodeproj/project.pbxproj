@@ -28,10 +28,10 @@
 		752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28C919234C3600DB5A3C /* BRTransaction.m */; };
 		752E28DA19234C3600DB5A3C /* BRWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28CB19234C3600DB5A3C /* BRWallet.m */; };
 		752E28DB19234C3600DB5A3C /* BRWalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28CD19234C3600DB5A3C /* BRWalletManager.m */; };
-		752E28E719234DA200DB5A3C /* NSData+DigiByte.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28DE19234DA200DB5A3C /* NSData+DigiByte.m */; };
+		752E28E719234DA200DB5A3C /* NSData+AuroraCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28DE19234DA200DB5A3C /* NSData+AuroraCoin.m */; };
 		752E28E819234DA200DB5A3C /* NSData+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28E019234DA200DB5A3C /* NSData+Hash.m */; };
 		752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28E219234DA200DB5A3C /* NSManagedObject+Sugar.m */; };
-		752E28EA19234DA200DB5A3C /* NSMutableData+DigiByte.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28E419234DA200DB5A3C /* NSMutableData+DigiByte.m */; };
+		752E28EA19234DA200DB5A3C /* NSMutableData+AuroraCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28E419234DA200DB5A3C /* NSMutableData+AuroraCoin.m */; };
 		752E28EB19234DA200DB5A3C /* NSString+Base58.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28E619234DA200DB5A3C /* NSString+Base58.m */; };
 		752E28F119234E8100DB5A3C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E28F019234E8100DB5A3C /* Reachability.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		752E28F319235A0600DB5A3C /* rand_unix.c in Sources */ = {isa = PBXBuildFile; fileRef = 752E28F219235A0600DB5A3C /* rand_unix.c */; };
@@ -728,14 +728,14 @@
 		752E28CC19234C3600DB5A3C /* BRWalletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRWalletManager.h; sourceTree = "<group>"; };
 		752E28CD19234C3600DB5A3C /* BRWalletManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRWalletManager.m; sourceTree = "<group>"; };
 		752E28DC19234D1000DB5A3C /* BRBIP32Sequence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBIP32Sequence.h; sourceTree = "<group>"; };
-		752E28DD19234DA200DB5A3C /* NSData+DigiByte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DigiByte.h"; sourceTree = "<group>"; };
-		752E28DE19234DA200DB5A3C /* NSData+DigiByte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DigiByte.m"; sourceTree = "<group>"; };
+		752E28DD19234DA200DB5A3C /* NSData+AuroraCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AuroraCoin.h"; sourceTree = "<group>"; };
+		752E28DE19234DA200DB5A3C /* NSData+AuroraCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AuroraCoin.m"; sourceTree = "<group>"; };
 		752E28DF19234DA200DB5A3C /* NSData+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hash.h"; sourceTree = "<group>"; };
 		752E28E019234DA200DB5A3C /* NSData+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hash.m"; sourceTree = "<group>"; };
 		752E28E119234DA200DB5A3C /* NSManagedObject+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Sugar.h"; sourceTree = "<group>"; };
 		752E28E219234DA200DB5A3C /* NSManagedObject+Sugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Sugar.m"; sourceTree = "<group>"; };
-		752E28E319234DA200DB5A3C /* NSMutableData+DigiByte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+DigiByte.h"; sourceTree = "<group>"; };
-		752E28E419234DA200DB5A3C /* NSMutableData+DigiByte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+DigiByte.m"; sourceTree = "<group>"; };
+		752E28E319234DA200DB5A3C /* NSMutableData+AuroraCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+AuroraCoin.h"; sourceTree = "<group>"; };
+		752E28E419234DA200DB5A3C /* NSMutableData+AuroraCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+AuroraCoin.m"; sourceTree = "<group>"; };
 		752E28E519234DA200DB5A3C /* NSString+Base58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base58.h"; sourceTree = "<group>"; };
 		752E28E619234DA200DB5A3C /* NSString+Base58.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base58.m"; sourceTree = "<group>"; };
 		752E28EF19234E8100DB5A3C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = SOURCE_ROOT; };
@@ -1491,16 +1491,16 @@
 		75D5F3C1191EC270004AB296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		75D5F3C3191EC270004AB296 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		75D5F3C5191EC270004AB296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		75D5F3C9191EC270004AB296 /* DigiByte-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DigiByte-Info.plist"; sourceTree = "<group>"; };
+		75D5F3C9191EC270004AB296 /* AuroraCoin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuroraCoin-Info.plist"; sourceTree = "<group>"; };
 		75D5F3CB191EC270004AB296 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75D5F3CD191EC270004AB296 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		75D5F3CF191EC270004AB296 /* DigiByte-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DigiByte-Prefix.pch"; sourceTree = "<group>"; };
+		75D5F3CF191EC270004AB296 /* AuroraCoin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AuroraCoin-Prefix.pch"; sourceTree = "<group>"; };
 		75D5F3D0191EC270004AB296 /* BRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppDelegate.h; sourceTree = "<group>"; };
 		75D5F3D1191EC270004AB296 /* BRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppDelegate.m; sourceTree = "<group>"; };
 		75D5F3DD191EC270004AB296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75D5F3DF191EC270004AB296 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		75D5F3E6191EC270004AB296 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		75D5F3EE191EC270004AB296 /* DigiByteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DigiByteTests-Info.plist"; sourceTree = "<group>"; };
+		75D5F3EE191EC270004AB296 /* AuroraCoinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuroraCoinTests-Info.plist"; sourceTree = "<group>"; };
 		75D5F3F0191EC270004AB296 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75D5F3F2191EC270004AB296 /* BreadWalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreadWalletTests.m; sourceTree = "<group>"; };
 		75F27B0619DE2AB20047FC62 /* ccMemory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccMemory.h; sourceTree = SOURCE_ROOT; };
@@ -1685,10 +1685,10 @@
 				752E28E619234DA200DB5A3C /* NSString+Base58.m */,
 				752E28DF19234DA200DB5A3C /* NSData+Hash.h */,
 				752E28E019234DA200DB5A3C /* NSData+Hash.m */,
-				752E28DD19234DA200DB5A3C /* NSData+DigiByte.h */,
-				752E28DE19234DA200DB5A3C /* NSData+DigiByte.m */,
-				752E28E319234DA200DB5A3C /* NSMutableData+DigiByte.h */,
-				752E28E419234DA200DB5A3C /* NSMutableData+DigiByte.m */,
+				752E28DD19234DA200DB5A3C /* NSData+AuroraCoin.h */,
+				752E28DE19234DA200DB5A3C /* NSData+AuroraCoin.m */,
+				752E28E319234DA200DB5A3C /* NSMutableData+AuroraCoin.h */,
+				752E28E419234DA200DB5A3C /* NSMutableData+AuroraCoin.m */,
 				752E28E119234DA200DB5A3C /* NSManagedObject+Sugar.h */,
 				752E28E219234DA200DB5A3C /* NSManagedObject+Sugar.m */,
 			);
@@ -2929,11 +2929,11 @@
 		75D5F3C8191EC270004AB296 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75D5F3C9191EC270004AB296 /* DigiByte-Info.plist */,
+				75D5F3C9191EC270004AB296 /* AuroraCoin-Info.plist */,
 				75D5F3CA191EC270004AB296 /* InfoPlist.strings */,
 				75A1E4D6193869C500D85BEE /* Localizable.strings */,
 				75D5F3CD191EC270004AB296 /* main.m */,
-				75D5F3CF191EC270004AB296 /* DigiByte-Prefix.pch */,
+				75D5F3CF191EC270004AB296 /* AuroraCoin-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2951,7 +2951,7 @@
 		75D5F3ED191EC270004AB296 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75D5F3EE191EC270004AB296 /* DigiByteTests-Info.plist */,
+				75D5F3EE191EC270004AB296 /* AuroraCoinTests-Info.plist */,
 				75D5F3EF191EC270004AB296 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -3108,7 +3108,7 @@
 				ORGANIZATIONNAME = "Aaron Voisine";
 				TargetAttributes = {
 					75D5F3BD191EC270004AB296 = {
-						DevelopmentTeam = JQN65A9X3T;
+						DevelopmentTeam = D5F2Z3DYSQ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3120,7 +3120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "DigiByte" */;
+			buildConfigurationList = 75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraCoin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -3815,10 +3815,10 @@
 				757BE7E3192C0E9D0061CB20 /* BRRestoreViewController.m in Sources */,
 				757BE7E6192C1FF70061CB20 /* BRWelcomeViewController.m in Sources */,
 				757BE7E9192D4E880061CB20 /* BRSeedViewController.m in Sources */,
-				752E28E719234DA200DB5A3C /* NSData+DigiByte.m in Sources */,
+				752E28E719234DA200DB5A3C /* NSData+AuroraCoin.m in Sources */,
 				752E28E819234DA200DB5A3C /* NSData+Hash.m in Sources */,
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
-				752E28EA19234DA200DB5A3C /* NSMutableData+DigiByte.m in Sources */,
+				752E28EA19234DA200DB5A3C /* NSMutableData+AuroraCoin.m in Sources */,
 				752E28EB19234DA200DB5A3C /* NSString+Base58.m in Sources */,
 				75D5F3D2191EC270004AB296 /* BRAppDelegate.m in Sources */,
 				759FBB36193290F600AB4465 /* BRRootViewController.m in Sources */,
@@ -3925,16 +3925,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/DigiByte-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/DigiByte-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = GCov_Build;
@@ -4093,16 +4095,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/DigiByte-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/DigiByte-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4115,16 +4119,18 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/DigiByte-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/DigiByte-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4142,7 +4148,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "DigiByte" */ = {
+		75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraCoin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D5F3F4191EC270004AB296 /* Debug */,

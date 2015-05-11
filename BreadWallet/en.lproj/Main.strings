@@ -2,14 +2,14 @@
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "00M-e1-IWY"; */
 "00M-e1-IWY.text" = "Detail";
 
-/* Class = "IBUILabel"; text = "ƀ 1,000,000"; ObjectID = "0ui-yr-JjJ"; */
-"0ui-yr-JjJ.text" = "ƀ 1,000,000";
+/* Class = "IBUILabel"; text = "ᚠ 10"; ObjectID = "0ui-yr-JjJ"; */
+"0ui-yr-JjJ.text" = "ᚠ 10";
 
 /* Class = "IBUILabel"; text = "start/restore another wallet"; ObjectID = "1Vn-hV-iDI"; */
 "1Vn-hV-iDI.text" = "start/restore another wallet";
 
-/* Class = "IBUINavigationItem"; title = "ƀ 0.00 ($0.00)"; ObjectID = "3hG-i3-g4Y"; */
-"3hG-i3-g4Y.title" = "ƀ 0.00 ($0.00)";
+/* Class = "IBUINavigationItem"; title = "ᚠ 0.00 ($0.00)"; ObjectID = "3hG-i3-g4Y"; */
+"3hG-i3-g4Y.title" = "ᚠ 0.00 ($0.00)";
 
 /* Class = "IBUIButton"; normalTitle = "restore from backup"; ObjectID = "4w7-k8-9wY"; */
 "4w7-k8-9wY.normalTitle" = "restore from backup";
@@ -23,11 +23,11 @@
 /* Class = "IBUIButton"; normalTitle = "generate backup phrase"; ObjectID = "A4M-yq-26d"; */
 "A4M-yq-26d.normalTitle" = "generate backup phrase";
 
-/* Class = "IBUITextField"; placeholder = "ƀ 0.00"; ObjectID = "DLS-lz-uxJ"; */
-"DLS-lz-uxJ.placeholder" = "ƀ 0.00";
+/* Class = "IBUITextField"; placeholder = "ᚠ 0.00"; ObjectID = "DLS-lz-uxJ"; */
+"DLS-lz-uxJ.placeholder" = "ᚠ 0.00";
 
-/* Class = "IBUINavigationItem"; title = "ƀ 0.00 ($0.00)"; ObjectID = "Ddo-ce-xs5"; */
-"Ddo-ce-xs5.title" = "ƀ 0.00 ($0.00)";
+/* Class = "IBUINavigationItem"; title = "ᚠ 0.00 ($0.00)"; ObjectID = "Ddo-ce-xs5"; */
+"Ddo-ce-xs5.title" = "ᚠ 0.00 ($0.00)";
 
 /* Class = "IBUIButton"; normalTitle = "2"; ObjectID = "E2i-Cd-bly"; */
 "E2i-Cd-bly.normalTitle" = "2";
@@ -44,8 +44,8 @@
 /* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "Huq-Vk-LaF"; */
 "Huq-Vk-LaF.title" = " ";
 
-/* Class = "IBUILabel"; text = "($1,000.00)"; ObjectID = "JNR-nK-iyP"; */
-"JNR-nK-iyP.text" = "($1,000.00)";
+/* Class = "IBUILabel"; text = "($1)"; ObjectID = "JNR-nK-iyP"; */
+"JNR-nK-iyP.text" = "($1)";
 
 /* Class = "IBUIButton"; normalTitle = "."; ObjectID = "Ktu-9p-xOl"; */
 "Ktu-9p-xOl.normalTitle" = ".";
@@ -62,20 +62,20 @@
 /* Class = "IBUIButton"; normalTitle = "0"; ObjectID = "Mvz-cZ-Yby"; */
 "Mvz-cZ-Yby.normalTitle" = "0";
 
-/* Class = "IBUILabel"; text = "ƀ 1,000,000"; ObjectID = "N6a-t6-1jK"; */
-"N6a-t6-1jK.text" = "ƀ 1,000,000";
+/* Class = "IBUILabel"; text = "ᚠ 10"; ObjectID = "N6a-t6-1jK"; */
+"N6a-t6-1jK.text" = "ᚠ 10";
 
 /* Class = "IBUIButton"; normalTitle = "5"; ObjectID = "NyY-8N-uhK"; */
 "NyY-8N-uhK.normalTitle" = "5";
 
-/* Class = "IBUILabel"; text = "($1,000.00)"; ObjectID = "O7K-cF-GAA"; */
-"O7K-cF-GAA.text" = "($1,000.00)";
+/* Class = "IBUILabel"; text = "($1)"; ObjectID = "O7K-cF-GAA"; */
+"O7K-cF-GAA.text" = "($1)";
 
-/* Class = "IBUILabel"; text = "($1,000.00)"; ObjectID = "Ofd-q3-a1P"; */
-"Ofd-q3-a1P.text" = "($1,000.00)";
+/* Class = "IBUILabel"; text = "($1)"; ObjectID = "Ofd-q3-a1P"; */
+"Ofd-q3-a1P.text" = "($1)";
 
-/* Class = "IBUILabel"; text = "ƀ 1,000,000"; ObjectID = "PSx-oa-hSL"; */
-"PSx-oa-hSL.text" = "ƀ 1,000,000";
+/* Class = "IBUILabel"; text = "ᚠ 10"; ObjectID = "PSx-oa-hSL"; */
+"PSx-oa-hSL.text" = "ᚠ 10";
 
 /* Class = "IBUIBarButtonItem"; title = "remind me later"; ObjectID = "QQS-Me-RNh"; */
 "QQS-Me-RNh.title" = "remind me later";
@@ -122,9 +122,6 @@
 /* Class = "IBUIButton"; normalTitle = "pay address from clipboard"; ObjectID = "bfj-xS-5rN"; */
 "bfj-xS-5rN.normalTitle" = "pay address from clipboard";
 
-/* Class = "IBUILabel"; text = "local currency"; ObjectID = "byz-51-A0c"; */
-"byz-51-A0c.text" = "local currency";
-
 /* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "cSD-3n-43a"; */
 "cSD-3n-43a.title" = " ";
 
@@ -158,17 +155,14 @@
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "fVX-tM-tZx"; */
 "fVX-tM-tZx.text" = "Title";
 
-/* Class = "IBUILabel"; text = "USD"; ObjectID = "gQu-dT-kF0"; */
-"gQu-dT-kF0.text" = "USD";
-
 /* Class = "IBUILabel"; text = "subtitle"; ObjectID = "gZx-fI-siU"; */
 "gZx-fI-siU.text" = "subtitle";
 
-/* Class = "IBUINavigationItem"; title = "ƀ 0.00 ($0.00)"; ObjectID = "h6T-AD-8zb"; */
-"h6T-AD-8zb.title" = "ƀ 0.00 ($0.00)";
+/* Class = "IBUINavigationItem"; title = "ᚠ 0.00 ($0.00)"; ObjectID = "h6T-AD-8zb"; */
+"h6T-AD-8zb.title" = "ᚠ 0.00 ($0.00)";
 
-/* Class = "IBUILabel"; text = "ƀ 1,000,000"; ObjectID = "hJG-af-ws1"; */
-"hJG-af-ws1.text" = "ƀ 1,000,000";
+/* Class = "IBUILabel"; text = "ᚠ 10"; ObjectID = "hJG-af-ws1"; */
+"hJG-af-ws1.text" = "ᚠ 10";
 
 /* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "hWS-2G-hHE"; */
 "hWS-2G-hHE.title" = " ";
@@ -194,8 +188,8 @@
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "pXc-8D-8Gh"; */
 "pXc-8D-8Gh.text" = "Detail";
 
-/* Class = "IBUILabel"; text = "($1,000.00)"; ObjectID = "qNV-Ka-14n"; */
-"qNV-Ka-14n.text" = "($1,000.00)";
+/* Class = "IBUILabel"; text = "($1)"; ObjectID = "qNV-Ka-14n"; */
+"qNV-Ka-14n.text" = "($1)";
 
 /* Class = "IBUILabel"; text = "receive money:"; ObjectID = "qel-3J-2VC"; */
 "qel-3J-2VC.text" = "receive money:";
@@ -209,14 +203,14 @@
 /* Class = "IBUILabel"; text = "subtitle"; ObjectID = "u6Z-kF-cAT"; */
 "u6Z-kF-cAT.text" = "subtitle";
 
-/* Class = "IBUILabel"; text = "ƀ 1,000,000"; ObjectID = "ue1-2S-fEr"; */
-"ue1-2S-fEr.text" = "ƀ 1,000,000";
+/* Class = "IBUILabel"; text = "ᚠ 10"; ObjectID = "ue1-2S-fEr"; */
+"ue1-2S-fEr.text" = "ᚠ 10";
 
 /* Class = "IBUINavigationItem"; title = "backup phrase:"; ObjectID = "wJz-hG-RRz"; */
 "wJz-hG-RRz.title" = "backup phrase:";
 
-/* Class = "IBUILabel"; text = "($1,000.00)"; ObjectID = "wd8-oB-KWn"; */
-"wd8-oB-KWn.text" = "($1,000.00)";
+/* Class = "IBUILabel"; text = "($1)"; ObjectID = "wd8-oB-KWn"; */
+"wd8-oB-KWn.text" = "($1)";
 
 /* Class = "IBUILabel"; text = "88.8%"; ObjectID = "xl3-sr-16q"; */
 "xl3-sr-16q.text" = "88.8%";

@@ -24,8 +24,8 @@
 //  THE SOFTWARE.
 
 #import "BRMerkleBlock.h"
-#import "NSMutableData+DigiByte.h"
-#import "NSData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
+#import "NSData+AuroraCoin.h"
 #import "NSData+Hash.h"
 #import <openssl/bn.h>
 
@@ -33,7 +33,7 @@
 #define MAX_PROOF_OF_WORK 0x1d00ffffu   // highest value for difficulty target (higher values are less difficult)
 #define TARGET_TIMESPAN   (0.10*24*60*60) // the targeted timespan between difficulty target adjustments
 
-// convert difficulty target format to bignum, as per: https://github.com/digibyte/digibyte/blob/master/src/uint256.h#L323
+// convert difficulty target format to bignum, as per: https://github.com/auroracoin/auroracoin/blob/master/src/uint256.h#L323
 static void setCompact(BIGNUM *bn, uint32_t compact)
 {
     uint32_t size = compact >> 24, word = compact & 0x007fffff;
@@ -67,8 +67,8 @@ static uint32_t getCompact(const BIGNUM *bn)
     return (compact | size << 24) | (BN_is_negative(bn) ? 0x00800000 : 0);
 }
 
-// from https://en.digibyte.it/wiki/Protocol_specification#Merkle_Trees
-// Merkle trees are binary trees of hashes. Merkle trees in digibyte use a double SHA-256, the SHA-256 hash of the
+// from https://en.auroracoin.it/wiki/Protocol_specification#Merkle_Trees
+// Merkle trees are binary trees of hashes. Merkle trees in auroracoin use a double SHA-256, the SHA-256 hash of the
 // SHA-256 hash of something. If, when forming a row in the tree (other than the root of the tree), it would have an odd
 // number of elements, the final double-hash is duplicated to ensure that the row has an even number of hashes. First
 // form the bottom row of the tree with the ordered double-SHA-256 hashes of the byte streams of the transactions in the
@@ -76,7 +76,7 @@ static uint32_t getCompact(const BIGNUM *bn)
 // concatenation of the corresponding two hashes below it in the tree. This procedure repeats recursively until we reach
 // a row consisting of just a single double-hash. This is the merkle root of the tree.
 //
-// from https://github.com/digibyte/bips/blob/master/bip-0037.mediawiki#Partial_Merkle_branch_format
+// from https://github.com/auroracoin/bips/blob/master/bip-0037.mediawiki#Partial_Merkle_branch_format
 // The encoding works as follows: we traverse the tree in depth-first order, storing a bit for each traversed node,
 // signifying whether the node is the parent of at least one matched leaf txid (or a matched txid itself). In case we
 // are at the leaf level, or this bit is 0, its merkle node hash is stored, and its children are not explored further.

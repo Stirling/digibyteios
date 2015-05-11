@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-// BIP70 payment protocol: https://github.com/digibyte/bips/blob/master/bip-0070.mediawiki
+// BIP70 payment protocol: https://github.com/auroracoin/bips/blob/master/bip-0070.mediawiki
 
 @interface BRPaymentProtocolDetails : NSObject
 

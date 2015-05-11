@@ -43,50 +43,28 @@
 #define PROTOCOL_TIMEOUT     30.0
 #define MAX_CONNECT_FAILURES 20 // notify user of network problems after this many connect failures in a row
 
-#if BITCOIN_TESTNET
-
-#define GENESIS_BLOCK_HASH @"7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496".hexToData.reverse
-
-// The testnet genesis block uses the mainnet genesis block's merkle root. The hash is wrong using its own root.
-#define GENESIS_BLOCK [[BRMerkleBlock alloc] initWithBlockHash:GENESIS_BLOCK_HASH version:1\
-    prevBlock:@"0000000000000000000000000000000000000000000000000000000000000000".hexToData\
-    merkleRoot:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData\
-    timestamp:1296688602.0 - NSTimeIntervalSince1970 target:0x1d00ffffu nonce:414098458u totalTransactions:1\
-    hashes:@"3ba3edfd7a7b12b27ac72c3e67768f617fC81bc3888a51323a9fb8aa4b1e5e4a".hexToData flags:@"00".hexToData height:0]
-
-static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t target; } checkpoint_array[] = {
-    //{ 0, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1413145109, 0x1b336ce6u },
-};
-
-static const char *dns_seeds[] = {
-    "seed1.digibyte.co",
-    "seed2.hashdragon.com",
-    "dgb.cryptoservices.net"
-};
-
-#else // main net
-
-#define GENESIS_BLOCK_HASH @"7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496".hexToData.reverse
+#define GENESIS_BLOCK_HASH @"2a8e100939494904af825b488596ddd536b3a96226ad02e0f7ab7ae472b27a8e".hexToData.reverse
 
 #define GENESIS_BLOCK [[BRMerkleBlock alloc] initWithBlockHash:GENESIS_BLOCK_HASH version:1\
     prevBlock:@"0000000000000000000000000000000000000000000000000000000000000000".hexToData\
-    merkleRoot:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData\
-    timestamp:1389388394.0 - NSTimeIntervalSince1970 target:0x1e0ffff0u nonce:2447652u totalTransactions:1\
-    hashes:@"72ddd9496b004221ed0557358846d9248ecd4c440ebd28ed901efc18757d0fad".hexToData flags:@"00".hexToData height:0]
+    merkleRoot:@"8957e5e8d2f0e90c42e739ec62fcc5dd21064852da64b6528ebd46567f222169".hexToData\
+    timestamp:1390598806.0 - NSTimeIntervalSince1970 target:0x1e0ffff0u nonce:2447652u totalTransactions:1\
+    hashes:@"8957e5e8d2f0e90c42e739ec62fcc5dd21064852da64b6528ebd46567f222169".hexToData flags:@"00".hexToData height:0]
 
 // blockchain checkpoints, these are also used as starting points for partial chain downloads, so they need to be at
 // difficulty transition boundaries in order to verify the block difficulty at the immediately following transition
 static const struct { uint32_t height; char *hash; time_t timestamp; uint32_t target; } checkpoint_array[] = {
-    { 0, "852c475c605e1f20bbe60219c811abaeef08bf0d4ff87eef59200fd7a7567fa7", 1389388394, 0x1e0ffff0u }
 };
 
 static const char *dns_seeds[] = {
-    "seed1.digibytewiki.com",
-    "seed2.digihash.co",
-    "dgb.cryptoservices.net"
+    "auroracoin.co.vu",
+    "seed.aur.co.vu",
+    "s1.auroraseed.eu",
+    "s1.auroraseed.org",
+    "s1.auroraseed.com",
+    "aurseed1.criptoe.com",
+    "89.160.133.242"
 };
-
-#endif
 
 @interface BRPeerManager ()
 
@@ -464,7 +442,7 @@ static const char *dns_seeds[] = {
     if (! [transaction isSigned]) {
         if (completion) {
             completion([NSError errorWithDomain:@"BreadWallet" code:401 userInfo:@{NSLocalizedDescriptionKey:
-                        NSLocalizedString(@"digibyte transaction not signed", nil)}]);
+                        NSLocalizedString(@"auroracoin transaction not signed", nil)}]);
         }
         return;
     }
@@ -472,7 +450,7 @@ static const char *dns_seeds[] = {
     if (! self.connected) {
         if (completion) {
             completion([NSError errorWithDomain:@"BreadWallet" code:-1009 userInfo:@{NSLocalizedDescriptionKey:
-                        NSLocalizedString(@"not connected to the digibyte network", nil)}]);
+                        NSLocalizedString(@"not connected to the auroracoin network", nil)}]);
         }
         return;
     }
@@ -736,7 +714,7 @@ static const char *dns_seeds[] = {
         if (self.lastBlock.height < self.downloadPeer.lastblock) return; // don't load bloom filter yet if we're syncing
         [peer sendFilterloadMessage:self.bloomFilter.data];
         [peer sendMempoolMessage];
-        [peer sendGetaddrMessage]; // request a list of other digibyte peers
+        [peer sendGetaddrMessage]; // request a list of other auroracoin peers
         return; // we're already connected to a download peer
     }
 
@@ -782,7 +760,7 @@ static const char *dns_seeds[] = {
     }
     else { // we're already synced
         [self syncStopped];
-        [peer sendGetaddrMessage]; // request a list of other digibyte peers
+        [peer sendGetaddrMessage]; // request a list of other auroracoin peers
         self.syncStartHeight = 0;
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -1005,13 +983,14 @@ static const char *dns_seeds[] = {
         }
     }
 
+    
     // verify block difficulty
-    if (! [block verifyDifficultyFromPreviousBlock:prev andTransitionTime:transitionTime]) {
-        NSLog(@"%@:%d relayed block with invalid difficulty target %x, blockHash: %@", peer.host, peer.port,
-              block.target, block.blockHash);
-        [self peerMisbehavin:peer];
-        return;
-    }
+    //if (! [block verifyDifficultyFromPreviousBlock:prev andTransitionTime:transitionTime]) {
+    //    NSLog(@"%@:%d relayed block with invalid difficulty target %x, blockHash: %@", peer.host, peer.port,
+    //          block.target, block.blockHash);
+    //    [self peerMisbehavin:peer];
+    //    return;
+   // }
 
     // verify block chain checkpoints
     if (self.checkpoints[@(block.height)] && ! [block.blockHash isEqual:self.checkpoints[@(block.height)]]) {
@@ -1099,7 +1078,7 @@ static const char *dns_seeds[] = {
         [self saveBlocks];
         [BRMerkleBlockEntity saveContext];
         [self syncStopped];
-        [peer sendGetaddrMessage]; // request a list of other digibyte peers
+        [peer sendGetaddrMessage]; // request a list of other auroracoin peers
         self.syncStartHeight = 0;
 
         dispatch_async(dispatch_get_main_queue(), ^{

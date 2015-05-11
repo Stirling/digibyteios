@@ -25,11 +25,11 @@
 
 #import <Foundation/Foundation.h>
 
-#define BITCOIN_PUBKEY_ADDRESS      30
+#define BITCOIN_PUBKEY_ADDRESS      23
 #define BITCOIN_SCRIPT_ADDRESS      5
 #define BITCOIN_PUBKEY_ADDRESS_TEST 111
 #define BITCOIN_SCRIPT_ADDRESS_TEST 196
-#define BITCOIN_PRIVKEY             128
+#define BITCOIN_PRIVKEY             151
 #define BITCOIN_PRIVKEY_TEST        239
 
 #define BIP38_NOEC_PREFIX      0x0142
@@ -60,8 +60,8 @@ CFAllocatorRef SecureAllocator();
 - (NSData *)hexToData;
 - (NSData *)addressToHash160;
 
-- (BOOL)isValidDigiByteAddress;
-- (BOOL)isValidDigiBytePrivateKey;
-- (BOOL)isValidDigiByteBIP38Key; // BIP38 encrypted keys: https://github.com/digibyte/bips/blob/master/bip-0038.mediawiki
+- (BOOL)isValidAuroraCoinAddress;
+- (BOOL)isValidAuroraCoinPrivateKey;
+- (BOOL)isValidAuroraCoinBIP38Key; // BIP38 encrypted keys: https://github.com/auroracoin/bips/blob/master/bip-0038.mediawiki
 
 @end

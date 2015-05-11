@@ -31,7 +31,7 @@
 #import "BRMerkleBlock.h"
 #import "NSManagedObject+Sugar.h"
 #import "NSString+Base58.h"
-#import "NSMutableData+DigiByte.h"
+#import "NSMutableData+AuroraCoin.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation BRTransactionEntity

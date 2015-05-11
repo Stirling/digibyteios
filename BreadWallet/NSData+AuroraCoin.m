@@ -1,5 +1,5 @@
 //
-//  NSData+DigiByte.m
+//  NSData+AuroraCoin.m
 //  BreadWallet
 //
 //  Created by Aaron Voisine on 10/9/13.
@@ -23,10 +23,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSData+DigiByte.h"
+#import "NSData+AuroraCoin.h"
 #import <CommonCrypto/CommonCrypto.h>
 
-@implementation NSData (DigiByte)
+@implementation NSData (AuroraCoin)
 
 - (uint8_t)UInt8AtOffset:(NSUInteger)offset
 {
