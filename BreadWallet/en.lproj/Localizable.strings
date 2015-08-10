@@ -5,13 +5,13 @@
 "\nA device passcode is needed to safeguard your wallet. Go to settings and turn passcode on to continue." = "\nA device passcode is needed to safeguard your wallet. Go to settings and turn passcode on to continue.";
 
 /* No comment provided by engineer. */
-"\nADDRESS ALREADY USED\n\nauroracoin addresses are intented for single use only\n\nre-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address" = "\nADDRESS ALREADY USED\n\nauroracoin addresses are intented for single use only\n\nre-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address";
+"\nADDRESS ALREADY USED\n\nAuroracoin addresses are intented for single use only\n\nre-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address" = "\nADDRESS ALREADY USED\n\nAuroracoin addresses are intented for single use only\n\nre-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address";
 
 /* No comment provided by engineer. */
-"\nauroracoin network fee + %@ (%@)" = "\nauroracoin network fee + %1$@ (%2$@)";
+"\nAuroracoin network fee + %@ (%@)" = "\nAuroracoin network fee + %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
-"\nDO NOT let anyone see your backup phrase or they can spend your auroracoins.\n\nDO NOT take a screenshot. Screenshots are visible to other apps and devices.\n\nDO NOT type your backup phrase into password managers or elsewhere. Other devices may be infected.\n" = "\nDO NOT let anyone see your backup phrase or they can spend your auroracoins.\n\nDO NOT take a screenshot. Screenshots are visible to other apps and devices.\n\nDO NOT type your backup phrase into password managers or elsewhere. Other devices may be infected.\n";
+"\nDO NOT let anyone see your backup phrase or they can spend your Auroracoins.\n\nDO NOT take a screenshot. Screenshots are visible to other apps and devices.\n\nDO NOT type your backup phrase into password managers or elsewhere. Other devices may be infected.\n" = "\nDO NOT let anyone see your backup phrase or they can spend your Auroracoins.\n\nDO NOT take a screenshot. Screenshots are visible to other apps and devices.\n\nDO NOT type your backup phrase into password managers or elsewhere. Other devices may be infected.\n";
 
 /* No comment provided by engineer. */
 "\ngo to settings and turn passcode on to access restricted areas of your wallet" = "\ngo to settings and turn passcode on to access restricted areas of your wallet";
@@ -23,7 +23,7 @@
 "%@ from:%@" = "%1$@ from:%2$@";
 
 /* No comment provided by engineer. */
-"%@ is for 'bits'. %@ = 1 auroracoin." = "%1$@ is for 'bits'. %2$@ = 1 auroracoin.";
+"%@ is for 'bits'. %@ = 1 Auroracoin." = "%1$@ is for 'bits'. %2$@ = 1 Auroracoin.";
 
 /* No comment provided by engineer. */
 "%@ to:%@" = "%1$@ to:%2$@";
@@ -71,22 +71,22 @@
 "bad signature" = "bad signature";
 
 /* No comment provided by engineer. */
-"AuroraCoin address" = "AuroraCoin address";
+"Auroracoin address" = "Auroracoin address";
 
 /* No comment provided by engineer. */
-"AuroraCoin addresses can also be copied to the clipboard. A auroracoin address always starts with a 'D'." = "AuroraCoin addresses can also be copied to the clipboard. A auroracoin address always starts with a 'D'.";
+"Auroracoin addresses can also be copied to the clipboard. A Auroracoin address always starts with a 'D'." = "Auroracoin addresses can also be copied to the clipboard. A Auroracoin address always starts with a 'D'.";
 
 /* No comment provided by engineer. */
-"auroracoin network fee" = "auroracoin network fee";
+"Auroracoin network fee" = "Auroracoin network fee";
 
 /* No comment provided by engineer. */
-"auroracoin network fees are only optional for high priority transactions (removal may cause delays)" = "auroracoin network fees are only optional for high priority transactions (removal may cause delays)";
+"Auroracoin network fees are only optional for high priority transactions (removal may cause delays)" = "Auroracoin network fees are only optional for high priority transactions (removal may cause delays)";
 
 /* No comment provided by engineer. */
-"auroracoin payments can't be less than %@" = "auroracoin payments can't be less than %@";
+"Auroracoin payments can't be less than %@" = "Auroracoin payments can't be less than %@";
 
 /* No comment provided by engineer. */
-"auroracoin transaction not signed" = "auroracoin transaction not signed";
+"Auroracoin transaction not signed" = "Auroracoin transaction not signed";
 
 /* No comment provided by engineer. */
 "cancel" = "cancel";
@@ -98,7 +98,7 @@
 "checking private key balance..." = "checking private key balance...";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid auroracoin address" = "clipboard doesn't contain a valid auroracoin address";
+"clipboard doesn't contain a valid Auroracoin address" = "clipboard doesn't contain a valid Auroracoin address";
 
 /* No comment provided by engineer. */
 "close app" = "close app";
@@ -131,7 +131,7 @@
 "couldn't sweep balance" = "couldn't sweep balance";
 
 /* No comment provided by engineer. */
-"couldn't transmit payment to auroracoin network" = "couldn't transmit payment to auroracoin network";
+"couldn't transmit payment to Auroracoin network" = "couldn't transmit payment to Auroracoin network";
 
 /* No comment provided by engineer. */
 "day" = "day";
@@ -143,10 +143,10 @@
 "delete" = "delete";
 
 /* No comment provided by engineer. */
-"DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your auroracoins)." = "DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your auroracoins).";
+"DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your Auroracoins)." = "DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your Auroracoins).";
 
 /* No comment provided by engineer. */
-"DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your auroracoins). Wipe this wallet immediately and restore on a secure device." = "DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your auroracoins). Wipe this wallet immediately and restore on a secure device.";
+"DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your Auroracoins). Wipe this wallet immediately and restore on a secure device." = "DEVICE SECURITY COMPROMISED\nAny 'jailbreak' app can access any other app's keychain data (and steal your Auroracoins). Wipe this wallet immediately and restore on a secure device.";
 
 /* No comment provided by engineer. */
 "do it later" = "do it later";
@@ -164,7 +164,7 @@
 "turn device passcode on" = "turn device passcode on";
 
 /* No comment provided by engineer. */
-"error signing auroracoin transaction" = "error signing auroracoin transaction";
+"error signing Auroracoin transaction" = "error signing Auroracoin transaction";
 
 /* No comment provided by engineer. */
 "error signing transaction" = "error signing transaction";
@@ -197,7 +197,7 @@
 "INVALID" = "INVALID";
 
 /* No comment provided by engineer. */
-"Let others scan this QR code to get your auroracoin address. Anyone can send auroracoins to your wallet by transferring them to your address." = "Let others scan this QR code to get your auroracoin address. Anyone can send auroracoins to your wallet by transferring them to your address.";
+"Let others scan this QR code to get your Auroracoin address. Anyone can send Auroracoins to your wallet by transferring them to your address." = "Let others scan this QR code to get your Auroracoin address. Anyone can send Auroracoins to your wallet by transferring them to your address.";
 
 /* No comment provided by engineer. */
 "minute" = "minute";
@@ -224,16 +224,16 @@
 "no peers found" = "no peers found";
 
 /* No comment provided by engineer. */
-"not a auroracoin QR code" = "not a auroracoin QR code";
+"not a Auroracoin QR code" = "not a Auroracoin QR code";
 
 /* No comment provided by engineer. */
-"not a valid auroracoin address" = "not a valid auroracoin address";
+"not a valid Auroracoin address" = "not a valid Auroracoin address";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "not a valid private key";
 
 /* No comment provided by engineer. */
-"not connected to the auroracoin network" = "not connected to the auroracoin network";
+"not connected to the Auroracoin network" = "not connected to the Auroracoin network";
 
 /* No comment provided by engineer. */
 "ok" = "ok";
@@ -248,7 +248,7 @@
 "post-dated" = "post-dated";
 
 /* No comment provided by engineer. */
-"Receive auroracoins at this address: %@" = "Receive auroracoins at this address: %@";
+"Receive Auroracoins at this address: %@" = "Receive Auroracoins at this address: %@";
 
 /* No comment provided by engineer. */
 "received" = "received";
@@ -275,7 +275,7 @@
 "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)" = "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their auroracoin address. You can send a payment to anyone with an address." = "Scan someone else's QR code to get their auroracoin address. You can send a payment to anyone with an address.";
+"Scan someone else's QR code to get their Auroracoin address. You can send a payment to anyone with an address." = "Scan someone else's QR code to get their Auroracoin address. You can send a payment to anyone with an address.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new backup phrase and keep it secret." = "Screenshots are visible to other apps and devices. Generate a new backup phrase and keep it secret.";
@@ -287,7 +287,7 @@
 "seen by %d of %d peers" = "seen by %d of %d peers";
 
 /* No comment provided by engineer. */
-"Send %@ (%@) from this private key into your wallet? The auroracoin network will receive a fee of %@ (%@)." = "Send %1$@ (%2$@) from this private key into your wallet? The auroracoin network will receive a fee of %3$@ (%4$@).";
+"Send %@ (%@) from this private key into your wallet? The Auroracoin network will receive a fee of %@ (%@)." = "Send %1$@ (%2$@) from this private key into your wallet? The Auroracoin network will receive a fee of %3$@ (%4$@).";
 
 /* No comment provided by engineer. */
 "send as email" = "send as email";
@@ -329,16 +329,16 @@
 "the app will now close" = "the app will now close";
 
 /* No comment provided by engineer. */
-"the auroracoin network will receive a fee of %@ (%@)" = "the auroracoin network will receive a fee of %1$@ (%2$@)";
+"the Auroracoin network will receive a fee of %@ (%@)" = "the Auroracoin network will receive a fee of %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
-"the standard auroracoin network fee for this transaction is %@ (%@)\n\nremoving this fee may delay confirmation" = "the standard auroracoin network fee for this transaction is %1$@ (%2$@)\n\nremoving this fee may delay confirmation";
+"the standard Auroracoin network fee for this transaction is %@ (%@)\n\nremoving this fee may delay confirmation" = "the standard Auroracoin network fee for this transaction is %1$@ (%2$@)\n\nremoving this fee may delay confirmation";
 
 /* No comment provided by engineer. */
-"This is your auroracoin address. Tap to copy it or send it by email or sms. The address will change each time you receive funds, but old addresses always work." = "This is your auroracoin address. Tap to copy it or send it by email or sms. The address will change each time you receive funds, but old addresses always work.";
+"This is your Auroracoin address. Tap to copy it or send it by email or sms. The address will change each time you receive funds, but old addresses always work." = "This is your Auroracoin address. Tap to copy it or send it by email or sms. The address will change each time you receive funds, but old addresses always work.";
 
 /* No comment provided by engineer. */
-"This is your auroracoin balance. AuroraCoin is a currency. The exchange rate changes with the market." = "This is your auroracoin balance. AuroraCoin is a currency. The exchange rate changes with the market.";
+"This is your Auroracoin balance. Auroracoin is a currency. The exchange rate changes with the market." = "This is your Auroracoin balance. Auroracoin is a currency. The exchange rate changes with the market.";
 
 /* No comment provided by engineer. */
 "this payment address is already in your wallet" = "this payment address is already in your wallet";
@@ -410,7 +410,7 @@
 "wipe" = "wipe";
 
 /* No comment provided by engineer. */
-"you received auroracoin!" = "you received auroracoin!";
+"you received Auroracoin!" = "you received Auroracoin!";
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain.";
