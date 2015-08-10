@@ -42,7 +42,7 @@
 
 #define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their auroracoin address. "\
                                          "You can send a payment to anyone with an address.", nil)
-#define CLIPBOARD_TIP NSLocalizedString(@"AuroraCoin addresses can also be copied to the clipboard. "\
+#define CLIPBOARD_TIP NSLocalizedString(@"Auroracoin addresses can also be copied to the clipboard. "\
                                          "A auroracoin address always starts with a 'D'.", nil)
 
 #define LOCK @"\xF0\x9F\x94\x92" // unicode lock symbol U+1F512 (utf-8)
