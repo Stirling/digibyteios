@@ -1487,14 +1487,14 @@
 		75B8346619233B550010931E /* dsa_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dsa_gen.c; sourceTree = "<group>"; };
 		75BCC59A1946520700EC1A64 /* BreadWalletTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BreadWalletTests.h; sourceTree = "<group>"; };
 		75C1426219A6844200402CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		75D5F3BE191EC270004AB296 /* breadwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = breadwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D5F3BE191EC270004AB296 /* AuroraWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuroraWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D5F3C1191EC270004AB296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		75D5F3C3191EC270004AB296 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		75D5F3C5191EC270004AB296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		75D5F3C9191EC270004AB296 /* AuroraCoin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuroraCoin-Info.plist"; sourceTree = "<group>"; };
+		75D5F3C9191EC270004AB296 /* AuroraWallet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuroraWallet-Info.plist"; sourceTree = "<group>"; };
 		75D5F3CB191EC270004AB296 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75D5F3CD191EC270004AB296 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		75D5F3CF191EC270004AB296 /* AuroraCoin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AuroraCoin-Prefix.pch"; sourceTree = "<group>"; };
+		75D5F3CF191EC270004AB296 /* AuroraWallet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AuroraWallet-Prefix.pch"; sourceTree = "<group>"; };
 		75D5F3D0191EC270004AB296 /* BRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppDelegate.h; sourceTree = "<group>"; };
 		75D5F3D1191EC270004AB296 /* BRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppDelegate.m; sourceTree = "<group>"; };
 		75D5F3DD191EC270004AB296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -2888,7 +2888,7 @@
 		75D5F3BF191EC270004AB296 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75D5F3BE191EC270004AB296 /* breadwallet.app */,
+				75D5F3BE191EC270004AB296 /* AuroraWallet.app */,
 				7579F7D919231A5D00CA56F4 /* libcrypto.a */,
 			);
 			name = Products;
@@ -2929,11 +2929,11 @@
 		75D5F3C8191EC270004AB296 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75D5F3C9191EC270004AB296 /* AuroraCoin-Info.plist */,
+				75D5F3C9191EC270004AB296 /* AuroraWallet-Info.plist */,
 				75D5F3CA191EC270004AB296 /* InfoPlist.strings */,
 				75A1E4D6193869C500D85BEE /* Localizable.strings */,
 				75D5F3CD191EC270004AB296 /* main.m */,
-				75D5F3CF191EC270004AB296 /* AuroraCoin-Prefix.pch */,
+				75D5F3CF191EC270004AB296 /* AuroraWallet-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3079,9 +3079,9 @@
 			productReference = 7579F7D919231A5D00CA56F4 /* libcrypto.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		75D5F3BD191EC270004AB296 /* breadwallet */ = {
+		75D5F3BD191EC270004AB296 /* AuroraWallet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75D5F3F6191EC270004AB296 /* Build configuration list for PBXNativeTarget "breadwallet" */;
+			buildConfigurationList = 75D5F3F6191EC270004AB296 /* Build configuration list for PBXNativeTarget "AuroraWallet" */;
 			buildPhases = (
 				75D5F3BA191EC270004AB296 /* Sources */,
 				75D5F3BB191EC270004AB296 /* Frameworks */,
@@ -3092,9 +3092,9 @@
 			dependencies = (
 				7579F7FD19231B2100CA56F4 /* PBXTargetDependency */,
 			);
-			name = breadwallet;
+			name = AuroraWallet;
 			productName = BreadWallet;
-			productReference = 75D5F3BE191EC270004AB296 /* breadwallet.app */;
+			productReference = 75D5F3BE191EC270004AB296 /* AuroraWallet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3108,7 +3108,7 @@
 				ORGANIZATIONNAME = "Aaron Voisine";
 				TargetAttributes = {
 					75D5F3BD191EC270004AB296 = {
-						DevelopmentTeam = D5F2Z3DYSQ;
+						DevelopmentTeam = YH9D75D47A;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3120,7 +3120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraCoin" */;
+			buildConfigurationList = 75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraWallet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -3133,7 +3133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				75D5F3BD191EC270004AB296 /* breadwallet */,
+				75D5F3BD191EC270004AB296 /* AuroraWallet */,
 				7579F7D819231A5D00CA56F4 /* crypto */,
 			);
 		};
@@ -3925,14 +3925,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraWallet-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraWallet-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4095,14 +4095,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraWallet-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraWallet-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4119,14 +4119,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BreadWallet/AuroraCoin-Prefix.pch";
+				GCC_PREFIX_HEADER = "BreadWallet/AuroraWallet-Prefix.pch";
 				GCC_WARN_PEDANTIC = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/openssl/include",
 				);
-				INFOPLIST_FILE = "BreadWallet/AuroraCoin-Info.plist";
+				INFOPLIST_FILE = "BreadWallet/AuroraWallet-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4148,7 +4148,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraCoin" */ = {
+		75D5F3B9191EC270004AB296 /* Build configuration list for PBXProject "AuroraWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D5F3F4191EC270004AB296 /* Debug */,
@@ -4158,7 +4158,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D5F3F6191EC270004AB296 /* Build configuration list for PBXNativeTarget "breadwallet" */ = {
+		75D5F3F6191EC270004AB296 /* Build configuration list for PBXNativeTarget "AuroraWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D5F3F7191EC270004AB296 /* Debug */,
